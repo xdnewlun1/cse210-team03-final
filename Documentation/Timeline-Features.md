@@ -1,7 +1,7 @@
 # Main Game Idea
 ---
-Either a rebuild of the Atari Breakout style shooter we worked on last week remade in the Arcade Space. We want to build this with more features for our players including Upgrades, Power-Ups, and New Enemies.
-Or build a classic Platformer early mario-esque style game.
+A small object stuck on the X-Axis that is avoiding falling obstacles. 
+- The object is a man  
 
 # Features and Timeline
 - [ ] Example Feature
@@ -11,3 +11,21 @@ Or build a classic Platformer early mario-esque style game.
 - We want feature # done by # author #
 
 
+# Game Flow
+- 1. Player Starts Program
+- 2. Game Scene (1) - Opens a Resteraunt Style Menu
+    - Title at the top
+    - Subheading Game - With Easy, Medium, Hard Mode Selection
+    - Subheading Info - With How to Play, and Leaderboard
+    - Subheading Desserts - With Exit
+- 3. Game (Includes all Difficulties) - Zach
+    -
+
+- 4. How to Play - Anita
+    -
+
+- 5. Leaderboards - Xander
+    -
+
+- 6. Quit
+    - Quit the Game
