@@ -1,6 +1,6 @@
 # Features and Timeline
 - [ ] Example Feature
-- [ ] Example Completed Feature
+- [X] Example Completed Feature
 
 # Timeline
 
