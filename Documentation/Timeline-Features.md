@@ -16,7 +16,8 @@ A small object stuck on the X-Axis that is avoiding falling obstacles.
 - 2. Game Scene (1) - Opens a Resteraunt Style Menu
     - Title at the top
     - Subheading Game - With Easy, Medium, Hard Mode Selection
-    - Subheading Info - With How to Play, and Leaderboard
+    - Subheading Info - Options 
+        - leads to a menu subheading With How to Play, and Leaderboard
     - Subheading Desserts - With Exit
 - 3. Game (Includes all Difficulties) - Zach
     -
