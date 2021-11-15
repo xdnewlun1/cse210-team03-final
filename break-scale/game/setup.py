@@ -39,3 +39,6 @@ class Setup:
         # This shows using a coordinate list to place sprites
 
     # Create the 'physics engine' 
+
+    # collisions food 
+        
