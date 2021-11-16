@@ -1,6 +1,8 @@
 import arcade
-#from game.player import player
+#from game.player import Player
+#from game.foodApple import Apple 
 from game import constants
+
 class Director(arcade.Window):
     def __init__(self):
 
@@ -82,3 +84,35 @@ class Director(arcade.Window):
         # Loop through each food we hit (if any) and remove it
 
         # Position the camera
+    def on_key_press(self, key, key_modifiers):
+        """
+        Called whenever a key on the keyboard is pressed.
+
+        For a full list of keys, see:
+        https://api.arcade.academy/en/latest/arcade.key.html
+        """
+        pass
+
+    def on_key_release(self, key, key_modifiers):
+        """
+        Called whenever the user lets off a previously pressed key.
+        """
+        pass
+
+    def on_mouse_motion(self, x, y, delta_x, delta_y):
+        """
+        Called whenever the mouse moves.
+        """
+        pass
+
+    def on_mouse_press(self, x, y, button, key_modifiers):
+        """
+        Called when the user presses a mouse button.
+        """
+        pass
+
+    def on_mouse_release(self, x, y, button, key_modifiers):
+        """
+        Called when a user releases a mouse button.
+        """
+        pass
