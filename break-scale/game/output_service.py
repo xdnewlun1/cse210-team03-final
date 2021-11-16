@@ -1,9 +1,17 @@
 import arcade
 import game.setup from Setup
-class On_Draw:
+class OutputService:
 
     def __init_ (self):
-        pass
+            """Outputs the game state. The responsibility of the class of objects is to draw the game state on the terminal. 
+    
+    Stereotype: 
+        Service Provider
+
+    Attributes:
+        _screen (Screen): An Asciimatics screen.
+    """
+    pass
 
     """Render the screen."""
     # Clear the screen to the background color

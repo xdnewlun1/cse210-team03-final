@@ -1,4 +1,7 @@
-import arcade
+class Director:
+    def __init__(self):
+        pass
+
 class Setup:
     def __init__(self):
             # Initialize Scene
@@ -41,4 +44,3 @@ class Setup:
     # Create the 'physics engine' 
 
     # collisions food 
-        
