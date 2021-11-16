@@ -8,6 +8,7 @@ class Director:
 
         # Call the parent class and set up the window
         super().__init__(constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT, constants.SCREEN_TITLE)
+         # Our Scene Object
 
         # Create the Sprite lists
         # These are 'lists' that keep track of our sprites. Each sprite should
@@ -60,6 +61,22 @@ class Director:
 
     def on_draw(self):
         """Render the screen."""
-
+        # Clear the screen to the background color
         arcade.start_render()
-        # Code to draw the screen goes here
+        # Activate the game camera
+
+        # Draw our Scene
+
+        # Draw our score on the screen, scrolling it with the viewport
+        
+    def on_update(self, delta_time):
+        """Movement and game logic"""
+
+        # Move the player with the physics engine
+        pass
+        
+        # See if we hit any food
+
+        # Loop through each food we hit (if any) and remove it
+
+        # Position the camera
