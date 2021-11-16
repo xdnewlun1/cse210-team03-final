@@ -1,12 +1,25 @@
+import arcade
+from game.player import player
+from game import constants
 class Director:
     def __init__(self):
-        pass
 
-class Setup:
-    def __init__(self):
-            # Initialize Scene
-   
-    # Setup the Cameras
+        """Set up the game here. Call this function to restart the game."""
+
+        # Call the parent class and set up the window
+        super().__init__(constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT, constants.SCREEN_TITLE)
+
+        # Create the Sprite lists
+        # These are 'lists' that keep track of our sprites. Each sprite should
+        # go into a list.
+
+        # Separate variable that holds the player sprite
+
+        arcade.set_background_color(arcade.csscolor.CORNFLOWER_BLUE)
+
+    def setup(self):
+        """Set up the game here. Call this function to restart the game."""
+        # Setup the Cameras
         self.camera = arcade.Camera(self.width, self.height)
         self.gui_camera = arcade.Camera(self.width, self.height)
 
@@ -21,7 +34,7 @@ class Setup:
             # Create boxes in the middle
  
     # Set up the player, specifically placing it at these coordinates.
-     # Keep track of the score
+    # Keep track of the score
         self.score = 0
 
         # Create the food instance
@@ -44,3 +57,9 @@ class Setup:
     # Create the 'physics engine' 
 
     # collisions food 
+
+    def on_draw(self):
+        """Render the screen."""
+
+        arcade.start_render()
+        # Code to draw the screen goes here
