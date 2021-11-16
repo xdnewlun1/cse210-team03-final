@@ -1,6 +1,6 @@
 import arcade
 #from game.player import Player
-#from game.foodApple import Apple 
+from game.foodApple import Apple 
 from game import constants
 
 class Director(arcade.Window):
@@ -13,7 +13,7 @@ class Director(arcade.Window):
         # create the sprite list 
         # These are list that keep track of sprites
         # Each sprite should go into a list set to none 
-        self.player_list = None
+        self.player_sprite_list = None
         self.apple_sprite_list = None
         # separate variable that holdsthe player sprite
         self.player_sprite = None
@@ -25,6 +25,8 @@ class Director(arcade.Window):
         # setup the cameras
 
         # sprite list 
+        self.player_sprite_list = arcade.SpriteList()
+        self.apple_sprite_list = arcade.SpriteList()
 
         # --- set up the wall s
         # crete horizontal rows of boxes
@@ -33,14 +35,17 @@ class Director(arcade.Window):
             # left
             # right
             # create a box in the middle 
+
         # set up the player , specifically playing it at the coordinates
-        self.player_list = arcade.SpriteList()
+        
         # keep track of score
         #self.score = 0 set to zero here and in initialzie 
 
         # create the food instance
             # position the food
-            # add the food to the list 
+            # add the food to the list
+        
+         
         # create the unhealthy food instance
             # position the food
             # add the food to the list 

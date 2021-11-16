@@ -1,4 +1,6 @@
 import arcade
+import os
+
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 SCREEN_TITLE = "Break the Scale"
@@ -23,4 +25,4 @@ FOOD_COUNT = 50
 
 # LAYER NAMES FROM TILEMAP
 
-
+PATH = os.path.dirname(os.path.abspath(__file__))
