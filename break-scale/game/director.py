@@ -1,6 +1,6 @@
 import arcade
 #from game.player import Player
-from game.foodApple import Apple 
+#from game.foodApple import Apple 
 from game import constants
 
 class Director(arcade.Window):
