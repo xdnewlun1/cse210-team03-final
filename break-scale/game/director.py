@@ -1,7 +1,7 @@
 import arcade
 #from game.player import player
 from game import constants
-class Director:
+class Director(arcade.Window):
     def __init__(self):
 
         """Set up the game here. Call this function to restart the game."""
@@ -13,8 +13,10 @@ class Director:
         # Create the Sprite lists
         # These are 'lists' that keep track of our sprites. Each sprite should
         # go into a list.
+        self.player_list = None
 
         # Separate variable that holds the player sprite
+        self.player_sprite = None
 
         arcade.set_background_color(arcade.csscolor.CORNFLOWER_BLUE)
 
@@ -23,19 +25,20 @@ class Director:
         # Setup the Cameras
         #self.camera = arcade.Camera(self.width, self.height)
         #self.gui_camera = arcade.Camera(self.width, self.height)
+        
+        # Sprite lists
 
-    # Sprite lists
-
-    # -- Set up the walls
+        # -- Set up the walls
         # Create horizontal rows of boxes
         # Top edge
         # Create vertical columns of boxes
             # Left
             # right
             # Create boxes in the middle
- 
-    # Set up the player, specifically placing it at these coordinates.
-    # Keep track of the score
+
+        # Set up the player, specifically placing it at these coordinates.
+        self.player_list = arcade.SpriteList()
+        # Keep track of the score
         #self.score = 0
 
         # Create the food instance
@@ -45,19 +48,18 @@ class Director:
             # Position the food
             # Add the food to the lists
     
-    # set up the background
-    arcade.set_background_color(arcade.color.AMAZON)
+        # set up the background
+        arcade.set_background_color(arcade.color.AMAZON)
 
-    # Create the ground
-    # This shows using a loop to place multiple sprites horizontally
+        # Create the ground
+        # This shows using a loop to place multiple sprites horizontally
 
-    
-    # Put some trees on the ground
+        # Put some trees on the ground
         # This shows using a coordinate list to place sprites
 
-    # Create the 'physics engine' 
+        # Create the 'physics engine' 
 
-    # collisions food 
+        # collisions food 
 
     def on_draw(self):
         """Render the screen."""

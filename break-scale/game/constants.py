@@ -1,6 +1,6 @@
 import arcade
 SCREEN_WIDTH = 800
-SCREEN_HEIGH = 600
+SCREEN_HEIGHT = 600
 SCREEN_TITLE = "Break the Scale"
 
 # Constants used to scale our sprites from their original size
