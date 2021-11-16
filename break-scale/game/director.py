@@ -5,114 +5,80 @@ from game import constants
 
 class Director(arcade.Window):
     def __init__(self):
+        """Set up the game . Call this function to restart the game """
+        # call the parent class and set up the window 
+        super().__init__(constants.SCREEN_WIDTH, constants.SCREEN_WIDTH, constants.SCREEN_TITLE)
+        # our scene object
 
-        """Set up the game here. Call this function to restart the game."""
-
-        # Call the parent class and set up the window
-        super().__init__(constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT, constants.SCREEN_TITLE)
-         # Our Scene Object
-
-        # Create the Sprite lists
-        # These are 'lists' that keep track of our sprites. Each sprite should
-        # go into a list.
+        # create the sprite list 
+        # These are list that keep track of sprites
+        # Each sprite should go into a list set to none 
         self.player_list = None
-
-        # Separate variable that holds the player sprite
+        self.apple_sprite_list = None
+        # separate variable that holdsthe player sprite
         self.player_sprite = None
-
-        arcade.set_background_color(arcade.csscolor.CORNFLOWER_BLUE)
+        # set background color
+        arcade.set_background_color(arcade.css.color.CORNFLOWER_BLUE)
 
     def setup(self):
-        """Set up the game here. Call this function to restart the game."""
-        # Setup the Cameras
-        #self.camera = arcade.Camera(self.width, self.height)
-        #self.gui_camera = arcade.Camera(self.width, self.height)
-        
-        # Sprite lists
+        """set up the game here. call this function to restart the game """
+        # setup the cameras
 
-        # -- Set up the walls
-        # Create horizontal rows of boxes
-        # Top edge
-        # Create vertical columns of boxes
-            # Left
+        # sprite list 
+
+        # --- set up the wall s
+        # crete horizontal rows of boxes
+            # top edges
+        # create vertical columns of boxes
+            # left
             # right
-            # Create boxes in the middle
-
-        # Set up the player, specifically placing it at these coordinates.
+            # create a box in the middle 
+        # set up the player , specifically playing it at the coordinates
         self.player_list = arcade.SpriteList()
-        # Keep track of the score
-        #self.score = 0
+        # keep track of score
+        #self.score = 0 set to zero here and in initialzie 
 
-        # Create the food instance
-            # Position the food
-            # Add the food to the lists
-        # Create the unhealthy food instance
-            # Position the food
-            # Add the food to the lists
-    
+        # create the food instance
+            # position the food
+            # add the food to the list 
+        # create the unhealthy food instance
+            # position the food
+            # add the food to the list 
         # set up the background
-        arcade.set_background_color(arcade.color.AMAZON)
-
-        # Create the ground
-        # This shows using a loop to place multiple sprites horizontally
-
-        # Put some trees on the ground
-        # This shows using a coordinate list to place sprites
-
-        # Create the 'physics engine' 
-
+        arcade.set_background_color(arcade.css.color.CORNFLOWER_BLUE)
+        # create the ground 
+        # this shows using a loop to place multiple sprites horizotally 
+        #put some trees on the ground
+        # this shows using a coordinate list to place sprites. 
+        # create  the physics engine 
         # collisions food 
-
+    
     def on_draw(self):
-        """Render the screen."""
-        # Clear the screen to the background color
+        """render the screen"""
+        # clear the screen to the background color
         arcade.start_render()
-        # Activate the game camera
-
-        # Draw our Scene
-
-        # Draw our score on the screen, scrolling it with the viewport
-
+        # activate the game camera
+        # draw the scene
+        # draw our score on the screen, scrolling it with the viewport
     def on_update(self, delta_time):
-        """Movement and game logic"""
-
-        # Move the player with the physics engine
-        pass
-        
-        # See if we hit any food
-
-        # Loop through each food we hit (if any) and remove it
-
-        # Position the camera
+        """movement and game logic"""
+        # move the player with the physics engine
+        # see if we hit any food
+        #loop through each food we hit if any and remove it 
+        #position the camera
+        pass 
     def on_key_press(self, key, key_modifiers):
-        """
-        Called whenever a key on the keyboard is pressed.
-
-        For a full list of keys, see:
-        https://api.arcade.academy/en/latest/arcade.key.html
-        """
-        pass
-
+        """ called whenever a key on the keyboard is pressed
+        for a list of keys, see:https://api.arcade.academy/en/latest/arcade.key.html """
     def on_key_release(self, key, key_modifiers):
-        """
-        Called whenever the user lets off a previously pressed key.
-        """
+        """ called whenever the user lets off a previously pressed key"""
         pass
-
     def on_mouse_motion(self, x, y, delta_x, delta_y):
-        """
-        Called whenever the mouse moves.
-        """
+        """called whenever the mouse moves"""   
         pass
-
-    def on_mouse_press(self, x, y, button, key_modifiers):
-        """
-        Called when the user presses a mouse button.
-        """
+    def on_mouse_press(self, x,y,delta_x, delta_y):
+        """called whenthe user pressesthe mouse button"""
         pass
-
-    def on_mouse_release(self, x, y, button, key_modifiers):
-        """
-        Called when a user releases a mouse button.
-        """
+    def on_mouse_release(self, x,y,delta_x, delta_y):
+        """called when a u ser releases a mouse button"""
         pass
