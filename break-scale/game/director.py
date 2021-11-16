@@ -1,5 +1,5 @@
 import arcade
-from game.player import player
+#from game.player import player
 from game import constants
 class Director:
     def __init__(self):
@@ -21,8 +21,8 @@ class Director:
     def setup(self):
         """Set up the game here. Call this function to restart the game."""
         # Setup the Cameras
-        self.camera = arcade.Camera(self.width, self.height)
-        self.gui_camera = arcade.Camera(self.width, self.height)
+        #self.camera = arcade.Camera(self.width, self.height)
+        #self.gui_camera = arcade.Camera(self.width, self.height)
 
     # Sprite lists
 
@@ -36,7 +36,7 @@ class Director:
  
     # Set up the player, specifically placing it at these coordinates.
     # Keep track of the score
-        self.score = 0
+        #self.score = 0
 
         # Create the food instance
             # Position the food
@@ -68,7 +68,7 @@ class Director:
         # Draw our Scene
 
         # Draw our score on the screen, scrolling it with the viewport
-        
+
     def on_update(self, delta_time):
         """Movement and game logic"""
 
