@@ -1,3 +1,10 @@
+import arcade
+from game.director import Director
+
+def main():
+    window = Director()
+    window.Setup()
+    arcade.run()
 """import random
 from game import constants
 from game.director import Director
