@@ -18,7 +18,7 @@ class Director(arcade.Window):
         # separate variable that holdsthe player sprite
         self.player_sprite = None
         # set background color
-        arcade.set_background_color(arcade.css.color.CORNFLOWER_BLUE)
+        arcade.set_background_color(arcade.csscolor.CORNFLOWER_BLUE)
 
     def setup(self):
         """set up the game here. call this function to restart the game """
@@ -45,7 +45,7 @@ class Director(arcade.Window):
             # position the food
             # add the food to the list 
         # set up the background
-        arcade.set_background_color(arcade.css.color.CORNFLOWER_BLUE)
+        arcade.set_background_color(arcade.csscolor.CORNFLOWER_BLUE)
         # create the ground 
         # this shows using a loop to place multiple sprites horizotally 
         #put some trees on the ground
