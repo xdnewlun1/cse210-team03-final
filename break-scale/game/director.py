@@ -6,7 +6,10 @@ from game.fallingSnow import Snowflake # for snowflake example
 #from game.player import Player
 #from game.foodApple import Apple 
 
-
+# Set the working directory (where we expect to find files) to the same
+        # directory this .py file is in. You can leave this out of your own
+        # code, but it is needed to easily run the examples using "python -m"
+        # as mentioned at the top of this program.
 
 class Director(arcade.Window):
     def __init__(self):
@@ -85,7 +88,8 @@ class Director(arcade.Window):
             # create a box in the middle 
 
         # create the food instance
-            # position the food
+            # create it need width and height
+            # position the food need center x and center y
             # add the food to the list
         
         # create the unhealthy food instance
@@ -93,6 +97,8 @@ class Director(arcade.Window):
             # add the food to the list 
 
         # snowflake example 
+
+        # explosion 
         self.snowflake_list = []# snowflake ex
 
         for i in range(20):
@@ -129,11 +135,15 @@ class Director(arcade.Window):
         self.scene.draw()
         #self.apple_list.draw()
 
+        # put text on screen 
+            # score 
+            # draw text box
+
         # put instructions on screen 
         # instructions = "Move left or right arrows to get eat food"
         # arcade.draw_text(instructions, 10,90, arcade.color.WHITE,12)
         
-
+       
         # activate the game camera
 
         # draw our score on the screen, scrolling it with the viewport
@@ -149,7 +159,7 @@ class Director(arcade.Window):
         if key == arcade.key.LEFT or key == arcade.key.A:
             self.player_sprite.change_x = - constants.PLAYER_MOVEMENT_SPEED
         elif key == arcade.key.RIGHT or key == arcade.key.D:
-            self.player_sprite.change_x == constants.PLAYER_MOVEMENT_SPEED
+            self.player_sprite.change_x = constants.PLAYER_MOVEMENT_SPEED
 
     def on_key_release(self, key, modifiers):
         """ called whenever the user lets off a previously pressed key basically stops the player from moving"""
@@ -170,7 +180,8 @@ class Director(arcade.Window):
 
     def on_update(self, delta_time):
         """movement and game logic"""
-         # snowflake example 
+        #position the camera
+        # snowflake example 
         # Animate all the snowflake falling
         for snowflake in self.snowflake_list:
             snowflake.y -= snowflake.speed * delta_time
@@ -183,7 +194,6 @@ class Director(arcade.Window):
             snowflake.x += snowflake.speed * math.cos(snowflake.angle) * delta_time
             snowflake.angle += 1 * delta_time
             
-            # where do we put the key presses ??? in player?  input? or leave here? 
         # move the player with the physics engine
 
 
@@ -203,8 +213,13 @@ class Director(arcade.Window):
             self.player_sprite.bottom = 0
         elif self.player_sprite.top > constants.SCREEN_HEIGHT -1 :
             self.player_sprite.top = 0
-        # see if we hit any food
-        #loop through each food we hit if any and remove it 
-        #position the camera
+        
+        # Call update on all sprites (The sprites don't do much in this
+        # example though.) # see if we hit any food 
 
         # Generate a list of all sprites that collided with the player.
+
+        #loop through each food  see if we hit  change it, and add to score if any and remove it 
+        
+
+        
