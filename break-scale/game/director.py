@@ -15,7 +15,7 @@ class Director(arcade.Window):
     def __init__(self):
         """Set up the game . Call this function to restart the game """
         # call the parent class and set up the window 
-        super().__init__(constants.SCREEN_WIDTH, constants.SCREEN_WIDTH, constants.SCREEN_TITLE)
+        super().__init__(constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT, constants.SCREEN_TITLE)
         
         # our scene object to initialize and draw all at once 
         self.scene = None
