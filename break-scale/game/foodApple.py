@@ -8,5 +8,9 @@ class Food: # this needs to have parameter of arcade library and sprite
     # define update to move the food 
     """move the food and see if the food has fallen off the 
         bottom of the screen. if so reset it"""
+    
+    # did the food go off the screen If so, pop back to the top.
+    # or remove it
     pass
 
+ 
