@@ -1,5 +1,8 @@
 import arcade
 from game import constants 
+import random # for snowflake example
+import math # for snowflake example
+from game.fallingSnow import Snowflake # for snowflake example 
 #from game.player import Player
 #from game.foodApple import Apple 
 
@@ -21,6 +24,7 @@ class Director(arcade.Window):
         # wall_list_sprite turn on spatial hashing
         self.player_sprite_list = None
         self.apple_sprite_list = None
+        self.snowflake_sprite_list = None # snowflake example
 
         # separate variable that holds the player sprite
         self.player_sprite = None
@@ -71,6 +75,27 @@ class Director(arcade.Window):
             # position the food
             # add the food to the list 
 
+        # snowflake example 
+        self.snowflake_list = []# snowflake ex
+
+        for i in range(20):
+            # create snowflake instance
+            snowflake = Snowflake()
+
+            # randomly position snowflake
+            snowflake.x = random.randrange(constants.SCREEN_WIDTH)
+            snowflake.y = random.randrange(constants.SCREEN_HEIGHT + 200)
+
+            snowflake.size = random.randrange(10)
+            snowflake.speed = random.randrange(30,40)
+            snowflake.angle = random.uniform(math.pi, math.pi * 2)
+
+            # add snowflake to snowflake list 
+            self.snowflake_list.append(snowflake)
+
+        #don't show the mouse pointer # snowflake ex
+        self.set_mouse_visible(False)
+
         # set up the background
         arcade.set_background_color(arcade.csscolor.CORNFLOWER_BLUE)
 
@@ -92,13 +117,32 @@ class Director(arcade.Window):
 
         # draw our score on the screen, scrolling it with the viewport
 
+        # snowflake example
+        # draw the current position of each snowflake
+        for snowflake in self.snowflake_list:
+            arcade.draw_circle_filled(snowflake.x, snowflake.y, snowflake.size, arcade.color.WHITE)
+
+
     def on_update(self, delta_time):
         """movement and game logic"""
         # move the player with the physics engine
         # see if we hit any food
         #loop through each food we hit if any and remove it 
         #position the camera
-        pass 
+        
+        # snowflake example 
+        # Animate all the snowflake falling
+        for snowflake in self.snowflake_list:
+            snowflake.y -= snowflake.speed * delta_time
+
+            # check if snowflake has fallen below screen
+            if snowflake.y < 0 :
+                snowflake.reset_pos()
+            
+            # some math to make the snowflake move side to side
+            snowflake.x += snowflake.speed * math.cos(snowflake.angle) * delta_time
+            snowflake.angle += 1 * delta_time
+
 
     # where do we put the key presses ??? in player?  input? or leave here? 
     def on_key_press(self, key, key_modifiers):
