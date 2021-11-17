@@ -13,4 +13,8 @@ class Food: # this needs to have parameter of arcade library and sprite
     # or remove it
     pass
 
- 
+    """
+        Copy Falling Snow to be falling apples that collide with the player and give points.
+        Colision
+        https://upload.wikimedia.org/wikipedia/commons/3/3e/Applepix.png
+    """

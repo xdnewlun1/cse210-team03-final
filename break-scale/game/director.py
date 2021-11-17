@@ -1,4 +1,5 @@
 import arcade
+import sys
 from game import constants 
 import random # for snowflake example
 import math # for snowflake example
@@ -15,7 +16,7 @@ class Director(arcade.Window):
     def __init__(self):
         """Set up the game . Call this function to restart the game """
         # call the parent class and set up the window 
-        super().__init__(constants.SCREEN_WIDTH, constants.SCREEN_WIDTH, constants.SCREEN_TITLE)
+        super().__init__(constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT, constants.SCREEN_TITLE)
         
         # our scene object to initialize and draw all at once 
         self.scene = None
@@ -160,6 +161,8 @@ class Director(arcade.Window):
             self.player_sprite.change_x = - constants.PLAYER_MOVEMENT_SPEED
         elif key == arcade.key.RIGHT or key == arcade.key.D:
             self.player_sprite.change_x = constants.PLAYER_MOVEMENT_SPEED
+        elif key == arcade.key.ESCAPE:
+            arcade.exit()
 
     def on_key_release(self, key, modifiers):
         """ called whenever the user lets off a previously pressed key basically stops the player from moving"""
