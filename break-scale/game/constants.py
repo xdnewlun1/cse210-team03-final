@@ -10,15 +10,6 @@ TILE_SCALING = 0.5
 FOOD_SCALING = 0.5
 
 # do we need gravity? 
-
-# MOVEMENT SPEED OF PLAYER 
-PLAYER_MOVEMENT_SPEED = 10 
-
-# Constants used to scale our sprites from their original size
-CHARACTER_SCALING = 1
-TILE_SCALING = 0.5
-FOOD_SCALING = 0.5
-
 # Movement speed of player, in pixels per frame
 PLAYER_MOVEMENT_SPEED = 5
 
@@ -30,4 +21,4 @@ FOOD_COUNT = 50
 # LAYER NAMES FROM TILEMAP
 
 # file path
-PATH = os.path.dirname(os.path.abspath(__file__))
+#PATH = os.path.dirname(os.path.abspath(__file__))
