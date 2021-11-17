@@ -1,4 +1,3 @@
-import arcade
 import os
 
 SCREEN_WIDTH = 800
