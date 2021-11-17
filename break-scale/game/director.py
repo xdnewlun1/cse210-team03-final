@@ -166,7 +166,7 @@ class Director(arcade.Window):
         if key == arcade.key.LEFT or key == arcade.key.A:
             self.player_sprite.change_x = 0
         elif key == arcade.key.RIGHT or key == arcade.key.D:
-            self.player_sprite.change_x == 0
+            self.player_sprite.change_x = 0
 
     def on_mouse_motion(self, x, y, delta_x, delta_y):
         """called whenever the mouse moves"""   
