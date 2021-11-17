@@ -6,6 +6,8 @@ from game.fallingSnow import Snowflake # for snowflake example
 #from game.player import Player
 #from game.foodApple import Apple 
 
+
+
 class Director(arcade.Window):
     def __init__(self):
         """Set up the game . Call this function to restart the game """
@@ -22,7 +24,7 @@ class Director(arcade.Window):
         # Each sprite should go into a list set to none 
         # player_sprite_list, apple_sprite_list, donut_sprite_list, spaital hashing off
         # wall_list_sprite turn on spatial hashing
-        self.player_sprite_list = None
+        self.player_list = None
         self.apple_sprite_list = None
         self.snowflake_sprite_list = None # snowflake example
 
@@ -39,14 +41,19 @@ class Director(arcade.Window):
         # setup the cameras
 
         # sprite list create the object instance 
-        self.player_sprite_list = arcade.SpriteList()
+        self.player_list = arcade.SpriteList()
         self.apple_sprite_list = arcade.SpriteList()
 
         # set up the player instance, 
         # character scaling to .50 for 50 % of the screen
         # set up player specifically placing it at the coordinates center x 
         # and center y coordinates 
-        
+        image_source = ":resources:images/player/alienGreen_stand.png"
+        self.player_sprite = arcade.Sprite(image_source, constants.CHARACTER_SCALING)
+        self.player_sprite.center_x = 50
+        self.player_sprite.center_y = 50
+        self.player_list.append(self.player_sprite)
+    
         # keep track of score
         #self.score = 0 set to zero here and in initialize 
 
@@ -110,7 +117,7 @@ class Director(arcade.Window):
         arcade.start_render()
 
         # draw our sprites or call draw the scene draw ()
-        #self.player_list.draw()
+        self.player_list.draw()
         #self.apple_list.draw()
 
         # activate the game camera
