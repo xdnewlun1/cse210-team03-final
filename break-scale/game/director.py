@@ -1,7 +1,7 @@
 import arcade
+from game import constants 
 #from game.player import Player
 #from game.foodApple import Apple 
-from game import constants
 
 class Director(arcade.Window):
     def __init__(self):
@@ -85,8 +85,8 @@ class Director(arcade.Window):
         arcade.start_render()
 
         # draw our sprites or call draw the scene draw ()
-        self.player_list.draw()
-        self.apple_list.draw()
+        #self.player_list.draw()
+        #self.apple_list.draw()
 
         # activate the game camera
 
@@ -104,6 +104,7 @@ class Director(arcade.Window):
     def on_key_press(self, key, key_modifiers):
         """ called whenever a key on the keyboard is pressed
         for a list of keys, see:https://api.arcade.academy/en/latest/arcade.key.html """
+        pass
     def on_key_release(self, key, key_modifiers):
         """ called whenever the user lets off a previously pressed key"""
         pass
