@@ -5,7 +5,7 @@ SCREEN_HEIGHT = 600
 SCREEN_TITLE = "Break the Scale"
 
 #constants used to scale our sprites from their original size 
-CHARACTER_SCALING = 1
+CHARACTER_SCALING = 3
 TILE_SCALING = 0.5
 FOOD_SCALING = 0.5
 

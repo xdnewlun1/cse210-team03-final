@@ -62,10 +62,10 @@ class Director(arcade.Window):
         # character scaling to .50 for 50 % of the screen
         # set up player specifically placing it at the coordinates center x 
         # and center y coordinates 
-        image_source = "break-scale/game/resources/images/player/alienGreen_stand.png"
+        image_source = "break-scale/game/resources/images/player/test_player1.png"
         self.player_sprite = arcade.Sprite(image_source, constants.CHARACTER_SCALING)
         self.player_sprite.center_x = 400
-        self.player_sprite.center_y =150
+        self.player_sprite.center_y = 100
         self.scene.add_sprite("Player", self.player_sprite)
     
         # keep track of score
@@ -157,6 +157,7 @@ class Director(arcade.Window):
     def on_key_press(self, key, modifiers):
         """ called whenever a key on the keyboard is pressed
         for a list of keys, see:https://api.arcade.academy/en/latest/arcade.key.html """
+        self.player_sprite.update(key)
         if key == arcade.key.LEFT or key == arcade.key.A:
             self.player_sprite.change_x = - constants.PLAYER_MOVEMENT_SPEED
         elif key == arcade.key.RIGHT or key == arcade.key.D:
@@ -199,23 +200,23 @@ class Director(arcade.Window):
             
         # move the player with the physics engine
 
+        # copied over to player for zach 
+        # # move player without physics list 
+        # # move player
+        # # remove these lines in physics enige is moving player
+        # self.player_sprite.center_x += self.player_sprite.change_x
+        # self.player_sprite.center_y += self.player_sprite.change_y
 
-        # move player without physics list 
-        # move player
-        # remove these lines in physics enige is moving player
-        self.player_sprite.center_x += self.player_sprite.change_x
-        self.player_sprite.center_y += self.player_sprite.change_y
+        # #check for out of bounds
+        # if self.player_sprite.left < 0:
+        #     self.player_sprite.left = 0
+        # elif self.player_sprite.right > constants.SCREEN_WIDTH -1:
+        #     self.player_sprite.right = constants.SCREEN_WIDTH -1
 
-        #check for out of bounds
-        if self.player_sprite.left < 0:
-            self.player_sprite.left = 0
-        elif self.player_sprite.right > constants.SCREEN_WIDTH -1:
-            self.player_sprite.right = constants.SCREEN_WIDTH -1
-
-        if self.player_sprite.bottom < 0:
-            self.player_sprite.bottom = 0
-        elif self.player_sprite.top > constants.SCREEN_HEIGHT -1 :
-            self.player_sprite.top = 0
+        # if self.player_sprite.bottom < 0:
+        #     self.player_sprite.bottom = 0
+        # elif self.player_sprite.top > constants.SCREEN_HEIGHT -1 :
+        #     self.player_sprite.top = 0
         
         # Call update on all sprites (The sprites don't do much in this
         # example though.) # see if we hit any food 
