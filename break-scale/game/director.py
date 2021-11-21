@@ -4,6 +4,7 @@ from game import constants
 import random # for snowflake example
 import math # for snowflake example
 from game.fallingSnow import Snowflake # for snowflake example 
+from game.player import Player
 #from game.player import Player
 #from game.foodApple import Apple 
 
@@ -34,7 +35,8 @@ class Director(arcade.Window):
 
         # separate variable that holds the player sprite
         self.player_sprite = None
-
+        
+        self.player_list = None
         # our physics engine
 
         # set background color or set the tileMap
@@ -47,7 +49,7 @@ class Director(arcade.Window):
         # we would set scene.add_sprite_list("Player")
         self.scene = arcade.Scene()
         # setup the cameras
-
+        self.player_list = arcade.SpriteList()
         # create the sprite list for scene object scene
         self.scene.add_sprite_list("Player")
         self.scene.add_sprite_list("Apple")
@@ -135,7 +137,7 @@ class Director(arcade.Window):
         # draw our sprites or call draw the scene draw ()
         self.scene.draw()
         #self.apple_list.draw()
-
+        self.player_list.draw()
         # put text on screen 
             # score 
             # draw text box
@@ -199,7 +201,8 @@ class Director(arcade.Window):
             snowflake.angle += 1 * delta_time
             
         # move the player with the physics engine
-
+        
+        self.player_list.update()
         # copied over to player for zach 
         # # move player without physics list 
         # # move player
