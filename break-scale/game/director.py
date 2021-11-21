@@ -5,6 +5,7 @@ from game.foodApple import Apple
 import random # for snowflake example
 import math # for snowflake example
 from game.fallingSnow import Snowflake # for snowflake example 
+from game.player import Player
 #from game.player import Player
 #from game.foodApple import Apple 
 
@@ -35,7 +36,8 @@ class Director(arcade.Window):
 
         # separate variable that holds the player sprite
         self.player_sprite = None
-
+        
+        self.player_list = None
         # our physics engine
 
         # set background color or set the tileMap
@@ -48,7 +50,7 @@ class Director(arcade.Window):
         # we would set scene.add_sprite_list("Player")
         self.scene = arcade.Scene()
         # setup the cameras
-
+        self.player_list = arcade.SpriteList()
         # create the sprite list for scene object scene
         self.scene.add_sprite_list("Player")
         self.scene.add_sprite_list("Apple")
@@ -63,10 +65,10 @@ class Director(arcade.Window):
         # character scaling to .50 for 50 % of the screen
         # set up player specifically placing it at the coordinates center x 
         # and center y coordinates 
-        image_source = "break-scale/game/resources/images/player/alienGreen_stand.png"
+        image_source = "break-scale/game/resources/images/player/test_player1.png"
         self.player_sprite = arcade.Sprite(image_source, constants.CHARACTER_SCALING)
         self.player_sprite.center_x = 400
-        self.player_sprite.center_y =150
+        self.player_sprite.center_y = 100
         self.scene.add_sprite("Player", self.player_sprite)
     
         # keep track of score
@@ -131,7 +133,7 @@ class Director(arcade.Window):
         # draw our sprites or call draw the scene draw ()
         self.scene.draw()
         #self.apple_list.draw()
-
+        self.player_list.draw()
         # put text on screen 
             # score 
             # draw text box
@@ -153,6 +155,7 @@ class Director(arcade.Window):
     def on_key_press(self, key, modifiers):
         """ called whenever a key on the keyboard is pressed
         for a list of keys, see:https://api.arcade.academy/en/latest/arcade.key.html """
+        self.player_sprite.update(key)
         if key == arcade.key.LEFT or key == arcade.key.A:
             self.player_sprite.change_x = - constants.PLAYER_MOVEMENT_SPEED
         elif key == arcade.key.RIGHT or key == arcade.key.D:
@@ -187,24 +190,25 @@ class Director(arcade.Window):
 
             
         # move the player with the physics engine
+        
+        self.player_list.update()
+        # copied over to player for zach 
+        # # move player without physics list 
+        # # move player
+        # # remove these lines in physics enige is moving player
+        # self.player_sprite.center_x += self.player_sprite.change_x
+        # self.player_sprite.center_y += self.player_sprite.change_y
 
+        # #check for out of bounds
+        # if self.player_sprite.left < 0:
+        #     self.player_sprite.left = 0
+        # elif self.player_sprite.right > constants.SCREEN_WIDTH -1:
+        #     self.player_sprite.right = constants.SCREEN_WIDTH -1
 
-        # move player without physics list 
-        # move player
-        # remove these lines in physics enige is moving player
-        self.player_sprite.center_x += self.player_sprite.change_x
-        self.player_sprite.center_y += self.player_sprite.change_y
-
-        #check for out of bounds
-        if self.player_sprite.left < 0:
-            self.player_sprite.left = 0
-        elif self.player_sprite.right > constants.SCREEN_WIDTH -1:
-            self.player_sprite.right = constants.SCREEN_WIDTH -1
-
-        if self.player_sprite.bottom < 0:
-            self.player_sprite.bottom = 0
-        elif self.player_sprite.top > constants.SCREEN_HEIGHT -1 :
-            self.player_sprite.top = 0
+        # if self.player_sprite.bottom < 0:
+        #     self.player_sprite.bottom = 0
+        # elif self.player_sprite.top > constants.SCREEN_HEIGHT -1 :
+        #     self.player_sprite.top = 0
         
         # Call update on all sprites (The sprites don't do much in this
         # example though.) # see if we hit any food 
