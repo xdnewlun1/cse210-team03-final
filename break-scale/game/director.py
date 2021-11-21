@@ -1,6 +1,7 @@
 import arcade
 import sys
 from game import constants 
+from game.foodApple import Apple
 import random # for snowflake example
 import math # for snowflake example
 from game.fallingSnow import Snowflake # for snowflake example 
@@ -100,27 +101,22 @@ class Director(arcade.Window):
         # snowflake example 
 
         # explosion 
-        self.snowflake_list = []# snowflake ex
+        self.apple_list = []
+        apple_sprite_location = "break-scale/game/resources/images/food/Apple.png"
 
-        for i in range(20):
+        for i in range(5):
             # create snowflake instance
-            snowflake = Snowflake()
-
-            # randomly position snowflake
-            snowflake.x = random.randrange(constants.SCREEN_WIDTH)
-            snowflake.y = random.randrange(constants.SCREEN_HEIGHT + 200)
-
-            snowflake.size = random.randrange(10)
-            snowflake.speed = random.randrange(30,40)
-            snowflake.angle = random.uniform(math.pi, math.pi * 2)
-
+            apple = Apple(arcade, arcade.Sprite(apple_sprite_location, constants.FOOD_SCALING))
+            apple.reset_pos()
             # add snowflake to snowflake list 
-            self.snowflake_list.append(snowflake)
+            self.apple_list.append(apple)
+            self.scene.add_sprite("Apple", apple.sprite)
+            self.scene.draw()
             
 
         #don't show the mouse pointer # snowflake ex
         self.set_mouse_visible(False)
-
+ 
         # set up the background
         arcade.set_background_color(arcade.csscolor.CORNFLOWER_BLUE)
 
@@ -151,8 +147,8 @@ class Director(arcade.Window):
         # player explodes
         # snowflake example
         # draw the current position of each snowflake
-        for snowflake in self.snowflake_list:
-            arcade.draw_circle_filled(snowflake.x, snowflake.y, snowflake.size, arcade.color.WHITE)
+        for apple in self.apple_list:
+            self.scene.update()
 
     def on_key_press(self, key, modifiers):
         """ called whenever a key on the keyboard is pressed
@@ -186,16 +182,9 @@ class Director(arcade.Window):
         #position the camera
         # snowflake example 
         # Animate all the snowflake falling
-        for snowflake in self.snowflake_list:
-            snowflake.y -= snowflake.speed * delta_time
+        for apple in self.apple_list:
+            apple.update(delta_time)
 
-            # check if snowflake has fallen below screen
-            if snowflake.y < 0 :
-                snowflake.reset_pos()
-            
-            # some math to make the snowflake move side to side
-            snowflake.x += snowflake.speed * math.cos(snowflake.angle) * delta_time
-            snowflake.angle += 1 * delta_time
             
         # move the player with the physics engine
 
