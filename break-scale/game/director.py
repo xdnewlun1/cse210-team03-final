@@ -2,7 +2,7 @@ import arcade
 import os
 from game import constants 
 from game.foodApple import Apple
-#from game.player import Player
+from game.player import Player
 import random
 import math
 
@@ -44,14 +44,8 @@ class Director(arcade.Window):
         # keep track of score
         self.score = 150 #set to zero here and in initialize 
 
-        # set up the player instance, 
-        # character scaling to .50 for 50 % of the screen
-        # set up player specifically placing it at the coordinates center x 
-        # and center y coordinates 
-        image_source = "break-scale/game/resources/images/player/test_player1.png"
-        self.player_sprite = arcade.Sprite(image_source, constants.CHARACTER_SCALING)
-        self.player_sprite.center_x = 400
-        self.player_sprite.center_y = 100
+
+        self.player_sprite = Player()
         self.player_list.append(self.player_sprite)
 
         # self.apple_list = []
@@ -174,30 +168,9 @@ class Director(arcade.Window):
     def on_update(self, delta_time):
         """movement and game logic"""
         #position the camera
-
-        # move the player with the physics engine
         
         self.player_list.update()
-        #copied over to player for zach 
-        # move player without physics list 
-        # move player
-        # remove these lines in physics enige is moving player
-        self.player_sprite.center_x += self.player_sprite.change_x
-        self.player_sprite.center_y += self.player_sprite.change_y
-
-        #check for out of bounds
-        if self.player_sprite.left < 0:
-            self.player_sprite.left = 0
-        elif self.player_sprite.right > constants.SCREEN_WIDTH -1:
-            self.player_sprite.right = constants.SCREEN_WIDTH -1
-
-        if self.player_sprite.bottom < 0:
-            self.player_sprite.bottom = 0
-        elif self.player_sprite.top > constants.SCREEN_HEIGHT -1 :
-            self.player_sprite.top = 0
         
-        #Call update on all sprites (The sprites don't do much in this
-        #example though.) # see if we hit any food 
 
         # Generate a list of all sprites that collided with the player.
         self.apple_list.update()
