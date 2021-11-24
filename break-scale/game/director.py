@@ -43,7 +43,8 @@ class Director(arcade.Window):
 
         # keep track of score
         self.score = 150 #set to zero here and in initialize 
-
+        
+        # set up player sprite
 
         self.player_sprite = Player()
         self.player_list.append(self.player_sprite)
@@ -170,7 +171,7 @@ class Director(arcade.Window):
         #position the camera
         
         self.player_list.update()
-        
+
 
         # Generate a list of all sprites that collided with the player.
         self.apple_list.update()
