@@ -9,6 +9,7 @@ CHARACTER_SCALING = 3
 TILE_SCALING = 0.5
 FOOD_SCALING = 0.2
 
+GRAVITY = 1
 # do we need gravity? 
 # Movement speed of player, in pixels per frame
 PLAYER_MOVEMENT_SPEED = 5

@@ -1,9 +1,9 @@
 import arcade
 from game import constants
 import random
-class Apple(arcade.Sprite): # this needs to have parameter of arcade library and sprite 
-    """This class represents the food on our screen. it is a chld class
-    of the arcade librarys Sprite class"""
+class Apple(arcade.Sprite): 
+    """This class represents the food on our screen. it is a child class
+    of the arcade library Sprite class"""
 
     #def __init__(self, arcade, sprite):
         # self.arcade = arcade
