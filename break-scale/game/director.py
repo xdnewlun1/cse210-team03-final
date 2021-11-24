@@ -45,6 +45,7 @@ class Director(arcade.Window):
         self.score = 150 #set to zero here and in initialize 
         
         # set up player sprite
+
         self.player_sprite = Player()
         self.player_list.append(self.player_sprite)
 
@@ -168,14 +169,9 @@ class Director(arcade.Window):
     def on_update(self, delta_time):
         """movement and game logic"""
         #position the camera
-
-        # move the player with the physics engine
         
         self.player_list.update()
-        
-        
-        #Call update on all sprites (The sprites don't do much in this
-        #example though.) # see if we hit any food 
+
 
         # Generate a list of all sprites that collided with the player.
         self.apple_list.update()
