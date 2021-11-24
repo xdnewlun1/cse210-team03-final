@@ -1,6 +1,6 @@
 import arcade
 from game import constants
-# player class arcade.Sprite
+
 class Player(arcade.Sprite):
     """ Player Class """
     """This class represents the player on our screen. it is a child class
@@ -29,7 +29,6 @@ class Player(arcade.Sprite):
             self.bottom = 0
         elif self.top > constants.SCREEN_HEIGHT -1 :
             self.top = 0
-       
         # move player without physics list 
         # move player
         # remove these lines in physics engine is moving player

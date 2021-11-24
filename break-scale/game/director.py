@@ -102,11 +102,9 @@ class Director(arcade.Window):
 
         # explosion 
         
-            
-
         #don't show the mouse pointer # snowflake ex
         self.set_mouse_visible(False)
- 
+
         # set up the background
         arcade.set_background_color(arcade.csscolor.CORNFLOWER_BLUE)
 
@@ -124,7 +122,7 @@ class Director(arcade.Window):
 
         # put text on screen 
         output = f"Weight: {self.score}"
-        arcade.draw_text(output, 10, 550, arcade.color.WHITE, 16)
+        arcade.draw_text(output, 10, 560, arcade.color.WHITE, 16)
 
         # put instructions on screen 
         # instructions = "Move left or right arrows to get eat food"
@@ -156,19 +154,10 @@ class Director(arcade.Window):
         elif key == arcade.key.RIGHT or key == arcade.key.D:
             self.player_sprite.change_x = 0
 
-    def on_mouse_motion(self, x, y, delta_x, delta_y):
-        """called whenever the mouse moves"""   
-        pass
-    def on_mouse_press(self, x,y,delta_x, delta_y):
-        """called whenthe user pressesthe mouse button"""
-        pass
-    def on_mouse_release(self, x,y,delta_x, delta_y):
-        """called when a u ser releases a mouse button"""
-        pass
 
     def on_update(self, delta_time):
         """movement and game logic"""
-        #position the camera
+        # position the camera
         
         self.player_list.update()
 
@@ -183,6 +172,9 @@ class Director(arcade.Window):
         for apple in apple_hit:
             apple.remove_from_sprite_lists()
             self.score += 1
+
+        for apple in self.apple_list:
+            apple.center_y -= 0.000001
         
         self.physics_engine.update()
         
