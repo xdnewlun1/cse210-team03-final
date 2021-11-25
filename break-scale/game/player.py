@@ -9,9 +9,10 @@ class Player(arcade.Sprite):
     # Set up parent class
     def __init__(self) : 
         image_source = "break-scale/game/resources/images/player/test_player1.png"
-        super().__init__(image_source, constants.CHARACTER_SCALING)
+        super().__init__(image_source, constants.CHARACTER_SCALING/2)
+        # location of player
         self.center_x = 400
-        self.center_y = 100
+        self.center_y = 50
 
     def update(self):
         """ Move the player """
@@ -24,14 +25,8 @@ class Player(arcade.Sprite):
             self.left = 0
         elif self.right > constants.SCREEN_WIDTH -1:
             self.right = constants.SCREEN_WIDTH -1
-
+        # check for out of bounds
         if self.bottom < 0:
             self.bottom = 0
         elif self.top > constants.SCREEN_HEIGHT -1 :
             self.top = 0
-        # move player without physics list 
-        # move player
-        # remove these lines in physics engine is moving player
-        
-
-        #check for out of bounds
