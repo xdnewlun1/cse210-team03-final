@@ -5,7 +5,9 @@ from game.foodApple import Apple
 from game.player import Player
 import random
 import math
-
+from game.donut import Donut
+from game.carrot import Carrot
+from game.pizza import Pizza
 
 
 class Director(arcade.Window):
@@ -18,6 +20,11 @@ class Director(arcade.Window):
         self.player_list = None
         self.apple_list = None
         self.wall_list = None
+        self.donut_list = None
+        self.pizza_list = None
+        self.carrot_list = None
+        self.timer = 0.0
+        self.timer_output = "00:00:00"
 
         # separate variable that holds the player sprite
         self.player_sprite = None
@@ -34,6 +41,10 @@ class Director(arcade.Window):
         self.player_list = arcade.SpriteList()
         self.apple_list = arcade.SpriteList()
         self.wall_list = arcade.SpriteList(use_spatial_hash= True)
+        self.donut_list = arcade.SpriteList()
+        self.pizza_list = arcade.SpriteList()
+        self.carrot_list = arcade.SpriteList()
+        self.timer = 0.0
 
         # keep track of score
         self.score = 150 #set to zero here and in initialize 
@@ -43,18 +54,34 @@ class Director(arcade.Window):
         self.player_list.append(self.player_sprite)
 
         #create the apple
-        for a in range(200):
+        for a in range(10):
             #create the apple instane
             # apple image from ???
-            apple = Apple("break-scale/game/resources/images/food/Apple.png", constants.FOOD_SCALING)
-
+            apple = Apple("break-scale/game/resources/images/food/apple_sprite.png", constants.FOOD_SCALING)
             # position the apple
             apple.center_x = random.randrange(constants.SCREEN_WIDTH)
             apple.center_y = random.randrange(constants.SCREEN_HEIGHT)
-
             #apple.speed = random.randrange(30,40)
-
             self.apple_list.append(apple)
+
+        for d in range(20):
+            donut = Donut("break-scale/game/resources/images/food/donut_sprite.png",constants.FOOD_SCALING)
+            donut.center_x = random.randrange(constants.SCREEN_WIDTH)
+            donut.center_y = random.randrange(constants.SCREEN_HEIGHT)
+            self.donut_list.append(donut)
+
+        for c in range(20):
+            carrot = Carrot("break-scale/game/resources/images/food/carrot_sprite.png",constants.FOOD_SCALING)
+            carrot.center_x = random.randrange(constants.SCREEN_WIDTH)
+            carrot.center_y = random.randrange(constants.SCREEN_HEIGHT)
+            self.carrot_list.append(carrot)
+        
+        for p in range(20):
+            pizza = Pizza("break-scale/game/resources/images/food/pizza_sprite.png",constants.FOOD_SCALING)
+            pizza.center_x = random.randrange(constants.SCREEN_WIDTH)
+            pizza.center_y = random.randrange(constants.SCREEN_HEIGHT)
+            self.pizza_list.append(pizza)
+        
 
         # create the ground 
         # this shows using a loop to place multiple sprites horizontally 
@@ -76,10 +103,6 @@ class Director(arcade.Window):
             # create it need width and height
             # position the food need center x and center y
             # add the food to the list
-        
-        # create the unhealthy food instance
-            # position the food
-            # add the food to the list 
 
         # explosion 
         
@@ -101,10 +124,16 @@ class Director(arcade.Window):
         arcade.start_render()
         self.apple_list.draw()
         self.player_list.draw()
+        self.donut_list.draw()
+        self.pizza_list.draw()
+        self.carrot_list.draw()
 
         # put text on screen 
         output = f"Weight: {self.score}"
-        arcade.draw_text(output, 10, 560, arcade.color.WHITE, 16)
+        arcade.draw_text(output, 650, 560, arcade.color.WHITE, 16)
+
+        # set up timer output the time text
+        arcade.draw_text(self.timer_output, 10, 560, arcade.color.WHITE, 16)
 
         # put instructions on screen 
         # instructions = "Move left or right arrows to get eat food"
@@ -139,21 +168,46 @@ class Director(arcade.Window):
         # position the camera
         
         self.player_list.update()
-
-
+        
         # Generate a list of all sprites that collided with the player.
         self.apple_list.update()
+        self.donut_list.update()
+        self.pizza_list.update()
+        self.carrot_list.update()
+
+        # timer 
+        # set up timer
+        self.timer += delta_time
+        # calculate minutes
+        minutes = int(self.timer) // 60
+        # calculate seconds
+        seconds = int(self.timer) % 60
+        # calculate 100s of a second
+        seconds_100 = int((self.timer - seconds) * 100)
+        # figure out our output
+        self.timer_output = f"Time: {minutes:02d}:{seconds:02d}:{seconds_100:02d}"
 
         #loop through each food  see if we hit  change it, and add to score if any and remove it 
         apple_hit = arcade.check_for_collision_with_list(self.player_sprite, self.apple_list)
-
         for apple in apple_hit:
             apple.remove_from_sprite_lists()
             self.score += 1
-
-        # for apple in self.apple_list:
-        #     apple.center_y -= 0.000001
         
+        donut_hit = arcade.check_for_collision_with_list(self.player_sprite, self.donut_list)
+        for donut in donut_hit:
+            donut.reset_pos()
+            self.score += 40
+
+        pizza_hit = arcade.check_for_collision_with_list(self.player_sprite, self.pizza_list)
+        for pizza in pizza_hit:
+            pizza.reset_pos()
+            self.score += 40
+
+        carrot_hit = arcade.check_for_collision_with_list(self.player_sprite, self.carrot_list)
+        for carrot in carrot_hit:
+            carrot.reset_pos()
+            self.score += 5
+
         self.physics_engine.update()
         
 
