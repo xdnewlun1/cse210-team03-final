@@ -62,10 +62,10 @@ class Director(arcade.Window):
         #     self.scene.draw()
 
         #create the apple
-        for a in range(APPLE_COUNT):
+        for a in range(100):
             #create the apple instane
             # apple image from ???
-            apple = arcade.Sprite("break-scale/game/resources/images/food/Apple.png", constants.FOOD_SCALING)
+            apple = Apple("break-scale/game/resources/images/food/Apple.png", constants.FOOD_SCALING)
 
             # position the apple
             apple.center_x = random.randrange(constants.SCREEN_WIDTH)
