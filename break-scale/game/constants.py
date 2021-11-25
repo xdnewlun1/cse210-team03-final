@@ -7,11 +7,10 @@ SCREEN_TITLE = "Break the Scale"
 #constants used to scale our sprites from their original size 
 CHARACTER_SCALING = 3
 TILE_SCALING = 0.5
-FOOD_SCALING = 0.2
+FOOD_SCALING = 0.5
 
-
-GRAVITY = 1
 # do we need gravity? 
+GRAVITY = 1
 # Movement speed of player, in pixels per frame
 PLAYER_MOVEMENT_SPEED = 5
 
