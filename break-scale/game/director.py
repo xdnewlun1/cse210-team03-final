@@ -6,7 +6,6 @@ from game.player import Player
 import random
 import math
 
-APPLE_COUNT = 15
 
 
 class Director(arcade.Window):
@@ -16,21 +15,16 @@ class Director(arcade.Window):
         super().__init__(constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT, constants.SCREEN_TITLE)
 
         # Each sprite should go into a list set to none 
-        # player_sprite_list, apple_sprite_list, donut_sprite_list, spaital hashing off
-        # wall_list_sprite turn on spatial hashing
         self.player_list = None
         self.apple_list = None
         self.wall_list = None
-        # self.snowflake_sprite_list = None # snowflake example
 
         # separate variable that holds the player sprite
         self.player_sprite = None
         self.score = 150
 
-        #self.physics_engine = None
-
         # set background color or set the tileMap
-        arcade.set_background_color(arcade.csscolor.CORNFLOWER_BLUE)
+        #arcade.set_background_color(arcade.csscolor.CORNFLOWER_BLUE)
 
     def setup(self):
         """set up the game here. call this function to restart the game """
@@ -45,24 +39,11 @@ class Director(arcade.Window):
         self.score = 150 #set to zero here and in initialize 
         
         # set up player sprite
-
         self.player_sprite = Player()
         self.player_list.append(self.player_sprite)
 
-        # self.apple_list = []
-        # apple_sprite_location = "break-scale/game/resources/images/food/Apple.png"
-
-        # for i in range(constants.FOOD_Count):
-        #     # create snowflake instance
-        #     apple = arcade.Sprite(arcade, arcade.Sprite(apple_sprite_location, constants.FOOD_SCALING))
-        #     apple.reset_pos()
-        #     # add snowflake to snowflake list 
-        #     self.apple_list.append(apple)
-        #     self.scene.add_sprite("Apple", apple.sprite)
-        #     self.scene.draw()
-
         #create the apple
-        for a in range(100):
+        for a in range(200):
             #create the apple instane
             # apple image from ???
             apple = Apple("break-scale/game/resources/images/food/Apple.png", constants.FOOD_SCALING)
@@ -106,11 +87,12 @@ class Director(arcade.Window):
         self.set_mouse_visible(False)
 
         # set up the background
-        arcade.set_background_color(arcade.csscolor.CORNFLOWER_BLUE)
+        #arcade.set_background_color(arcade.csscolor.CORNFLOWER_BLUE)
 
         # create the physics engine by setting it to arcades physcis engine
-        self.physics_engine = arcade.PhysicsEngineSimple(self.player_sprite, self.wall_list)
         # and adding the player sprite and the scene sprite list to walls
+        self.physics_engine = arcade.PhysicsEngineSimple(self.player_sprite, self.wall_list)
+        
 
 
     def on_draw(self):
@@ -132,9 +114,6 @@ class Director(arcade.Window):
 
         # draw our score on the screen, scrolling it with the viewport
         # player explodes
-
-        # for apple in self.apple_list:
-        #     self.apple_list.update()
 
     def on_key_press(self, key, modifiers):
         """ called whenever a key on the keyboard is pressed
@@ -166,15 +145,14 @@ class Director(arcade.Window):
         self.apple_list.update()
 
         #loop through each food  see if we hit  change it, and add to score if any and remove it 
-
         apple_hit = arcade.check_for_collision_with_list(self.player_sprite, self.apple_list)
 
         for apple in apple_hit:
             apple.remove_from_sprite_lists()
             self.score += 1
 
-        for apple in self.apple_list:
-            apple.center_y -= 0.000001
+        # for apple in self.apple_list:
+        #     apple.center_y -= 0.000001
         
         self.physics_engine.update()
         
