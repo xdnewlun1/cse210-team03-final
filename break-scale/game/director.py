@@ -159,27 +159,12 @@ class Director(arcade.Window):
         # figure out our output
         self.timer_output = f"Time: {minutes:02d}:{seconds:02d}:{seconds_100:02d}"
 
-        #loop through each food  see if we hit  change it, and add to score if any and remove it 
-        apple_hit = arcade.check_for_collision_with_list(self.player_sprite, self.apple_list)
-        for apple in apple_hit:
-            apple.remove_from_sprite_lists()
-            self.score += 1
+        self.apple_collision()
+        self.carrot_collision()
+        self.donut_collision()
+        self.pizza_collision()
+
         
-        donut_hit = arcade.check_for_collision_with_list(self.player_sprite, self.donut_list)
-        for donut in donut_hit:
-            donut.reset_pos()
-            self.score += 10
-
-        pizza_hit = arcade.check_for_collision_with_list(self.player_sprite, self.pizza_list)
-        for pizza in pizza_hit:
-            pizza.reset_pos()
-            self.score += 10
-
-        carrot_hit = arcade.check_for_collision_with_list(self.player_sprite, self.carrot_list)
-        for carrot in carrot_hit:
-            carrot.reset_pos()
-            self.score += 5
-
         self.physics_engine.update()
 
     def create_apple(self):
@@ -214,6 +199,28 @@ class Director(arcade.Window):
             pizza.center_x = random.randrange(constants.SCREEN_WIDTH)
             pizza.center_y = random.randrange(constants.SCREEN_HEIGHT)
             self.pizza_list.append(pizza)
+    def apple_collision(self):
+    #loop through each food  see if we hit  change it, and add to score if any and remove it 
+        apple_hit = arcade.check_for_collision_with_list(self.player_sprite, self.apple_list)
+        for apple in apple_hit:
+            apple.remove_from_sprite_lists()
+            self.score += 1
+    def donut_collision(self):   
+        donut_hit = arcade.check_for_collision_with_list(self.player_sprite, self.donut_list)
+        for donut in donut_hit:
+            donut.reset_pos()
+            self.score += 10
+    def pizza_collision(self):
+        pizza_hit = arcade.check_for_collision_with_list(self.player_sprite, self.pizza_list)
+        for pizza in pizza_hit:
+            pizza.reset_pos()
+            self.score += 10
+    def carrot_collision(self):
+        carrot_hit = arcade.check_for_collision_with_list(self.player_sprite, self.carrot_list)
+        for carrot in carrot_hit:
+            carrot.reset_pos()
+            self.score += 5
+
         
 
         
