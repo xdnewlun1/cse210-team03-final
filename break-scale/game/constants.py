@@ -8,6 +8,7 @@ SCREEN_TITLE = "Break the Scale"
 CHARACTER_SCALING = 3
 TILE_SCALING = 0.5
 FOOD_SCALING = 0.5
+PATH = os.path.dirname(os.path.abspath(__file__))
 
 # do we need gravity? 
 GRAVITY = 1
@@ -16,6 +17,7 @@ PLAYER_MOVEMENT_SPEED = 5
 
 # FOOD COUNT 
 FOOD_COUNT = 250
+APPLE_COUNT = 15
 FOOD_FALL_SPEED = 0.25
 
 # PLAYER STARTING POSITION

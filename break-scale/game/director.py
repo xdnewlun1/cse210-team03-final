@@ -54,7 +54,7 @@ class Director(arcade.Window):
         self.player_list.append(self.player_sprite)
 
         #create the apple
-        for a in range(10):
+        for a in range(constants.APPLE_COUNT):
             #create the apple instane
             # apple image from ???
             apple = Apple("break-scale/game/resources/images/food/apple_sprite.png", constants.FOOD_SCALING)
@@ -70,7 +70,7 @@ class Director(arcade.Window):
             donut.center_y = random.randrange(constants.SCREEN_HEIGHT)
             self.donut_list.append(donut)
 
-        for c in range(20):
+        for c in range(constants.APPLE_COUNT):
             carrot = Carrot("break-scale/game/resources/images/food/carrot_sprite.png",constants.FOOD_SCALING)
             carrot.center_x = random.randrange(constants.SCREEN_WIDTH)
             carrot.center_y = random.randrange(constants.SCREEN_HEIGHT)
@@ -196,12 +196,12 @@ class Director(arcade.Window):
         donut_hit = arcade.check_for_collision_with_list(self.player_sprite, self.donut_list)
         for donut in donut_hit:
             donut.reset_pos()
-            self.score += 40
+            self.score += 10
 
         pizza_hit = arcade.check_for_collision_with_list(self.player_sprite, self.pizza_list)
         for pizza in pizza_hit:
             pizza.reset_pos()
-            self.score += 40
+            self.score += 10
 
         carrot_hit = arcade.check_for_collision_with_list(self.player_sprite, self.carrot_list)
         for carrot in carrot_hit:
