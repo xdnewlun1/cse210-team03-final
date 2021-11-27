@@ -8,8 +8,7 @@ class Player(arcade.Sprite):
 
     # Set up parent class
     def __init__(self) : 
-        image_source = "break-scale/game/resources/images/player/test_player1.png"
-        super().__init__(image_source, constants.CHARACTER_SCALING/2)
+        super().__init__(constants.PLAYER_SPRITE, constants.CHARACTER_SCALING/2)
         # location of player
         self.center_x = 400
         self.center_y = 50

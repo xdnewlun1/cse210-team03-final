@@ -171,7 +171,7 @@ class Director(arcade.Window):
         for a in range(10):
             #create the apple instane
             # apple image from ???
-            apple = Apple("break-scale/game/resources/images/food/apple_sprite.png", constants.FOOD_SCALING)
+            apple = Apple(constants.APPLE_SPRITE, constants.FOOD_SCALING)
             # position the apple
             apple.center_x = random.randrange(constants.SCREEN_WIDTH)
             apple.center_y = random.randrange(constants.SCREEN_HEIGHT)
@@ -181,21 +181,21 @@ class Director(arcade.Window):
     
     def create_donut(self):
         for d in range(20):
-            donut = Donut("break-scale/game/resources/images/food/donut_sprite.png",constants.FOOD_SCALING)
+            donut = Donut(constants.DONUT_SPRITE,constants.FOOD_SCALING)
             donut.center_x = random.randrange(constants.SCREEN_WIDTH)
             donut.center_y = random.randrange(constants.SCREEN_HEIGHT)
             self.donut_list.append(donut)
 
     def create_carrot(self):
         for c in range(20):
-            carrot = Carrot("break-scale/game/resources/images/food/carrot_sprite.png",constants.FOOD_SCALING)
+            carrot = Carrot(constants.CARROT_SPRITE,constants.FOOD_SCALING)
             carrot.center_x = random.randrange(constants.SCREEN_WIDTH)
             carrot.center_y = random.randrange(constants.SCREEN_HEIGHT)
             self.carrot_list.append(carrot)
             
     def create_pizza(self): 
         for p in range(20):
-            pizza = Pizza("break-scale/game/resources/images/food/pizza_sprite.png",constants.FOOD_SCALING)
+            pizza = Pizza(constants.PIZZA_SPRITE,constants.FOOD_SCALING)
             pizza.center_x = random.randrange(constants.SCREEN_WIDTH)
             pizza.center_y = random.randrange(constants.SCREEN_HEIGHT)
             self.pizza_list.append(pizza)
