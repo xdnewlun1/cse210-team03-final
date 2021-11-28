@@ -50,6 +50,6 @@ class GameOver(arcade.View):
         for listee in self.score_list[1:]:
             if int(listee[1]) <= self.minutes:
                 if int(listee[2]) <= self.sec:
-                    self.score_list.insert(self.score_list.index(listee),["", self.min, self.sec])
+                    self.score_list.insert(self.score_list.index(listee),["TES", self.min, self.sec])
         if len(self.score_list) > 11:
             self.score_list.remove(self.score_list[11])
