@@ -29,7 +29,7 @@ class GameView(arcade.View):
 
         # separate variable that holds the player sprite
         self.player_sprite = None
-        self.score = 150
+        self.score = 999
 
         # set background color or set the tileMap
         #arcade.set_background_color(arcade.csscolor.CORNFLOWER_BLUE)
@@ -48,7 +48,7 @@ class GameView(arcade.View):
         self.timer = 0.0
 
         # keep track of score
-        self.score = 150 #set to zero here and in initialize 
+        self.score = 999 #set to zero here and in initialize 
         
         # set up player sprite
         self.player_sprite = Player()
@@ -152,13 +152,13 @@ class GameView(arcade.View):
         # set up timer
         self.timer += delta_time
         # calculate minutes
-        minutes = int(self.timer) // 60
+        self.minutes = int(self.timer) // 60
         # calculate seconds
-        seconds = int(self.timer) % 60
+        self.seconds = int(self.timer) % 60
         # calculate 100s of a second
-        seconds_100 = int((self.timer - seconds) * 100)
+        self.seconds_100 = int((self.timer - self.seconds) * 100)
         # figure out our output
-        self.timer_output = f"Time: {minutes:02d}:{seconds:02d}:{seconds_100:02d}"
+        self.timer_output = f"Time: {self.minutes:02d}:{self.seconds:02d}:{self.seconds_100:02d}"
 
         self.apple_collision()
         self.carrot_collision()
@@ -170,7 +170,7 @@ class GameView(arcade.View):
 
     def check_health(self,score):
         if self.score >= 1000:
-            view = GameOver()
+            view = GameOver(self.minutes, self.seconds)
             self.window.show_view(view)
             
 

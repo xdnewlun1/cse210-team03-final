@@ -17,6 +17,9 @@ CARROT_SPRITE = PATH + "/resources/images/food/Carrot_sprite.png"
 DONUT_SPRITE = PATH + "/resources/images/food/Donut_sprite.png"
 PIZZA_SPRITE = PATH + "/resources/images/food/Pizza_sprite.png"
 
+#SCOREBOARD FILE
+SCOREBOARD_FILE = PATH + "/resources/scoreboard.csv"
+
 # do we need gravity? 
 GRAVITY = 1
 # Movement speed of player, in pixels per frame
