@@ -13,8 +13,6 @@ class GameOver(arcade.View):
         self.minutes = minutes
         self.new_name = "___"
         self.sec = sec
-        self.sec = 45
-        self.minutes = 2
         #self.texture = arcade.load_texture(constants.PLAYER_SPRITE)
 
         # Reset the viewport, necessary if we have a scrolling game and we need
