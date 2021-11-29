@@ -48,7 +48,7 @@ class GameView(arcade.View):
         self.timer = 0.0
 
         # keep track of score
-        self.score = 999 #set to zero here and in initialize 
+        self.score = 150 #set to zero here and in initialize 
         
         # set up player sprite
         self.player_sprite = Player()
