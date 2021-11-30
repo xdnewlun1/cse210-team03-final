@@ -121,21 +121,11 @@ class GameView(arcade.View):
     def on_key_press(self, key, modifiers):
         """ called whenever a key on the keyboard is pressed
         for a list of keys, see:https://api.arcade.academy/en/latest/arcade.key.html """
-        #self.player_sprite.update(key)
-        if key == arcade.key.LEFT or key == arcade.key.A:
-            self.player_sprite.change_x = - constants.PLAYER_MOVEMENT_SPEED
-        elif key == arcade.key.RIGHT or key == arcade.key.D:
-            self.player_sprite.change_x = constants.PLAYER_MOVEMENT_SPEED
-        elif key == arcade.key.ESCAPE:
-            arcade.exit()
+        self.player_sprite.on_key_press(key,modifiers)
 
     def on_key_release(self, key, modifiers):
         """ called whenever the user lets off a previously pressed key basically stops the player from moving"""
-        if key == arcade.key.LEFT or key == arcade.key.A:
-            self.player_sprite.change_x = 0
-        elif key == arcade.key.RIGHT or key == arcade.key.D:
-            self.player_sprite.change_x = 0
-
+        self.player_sprite.on_key_release(key,modifiers)
 
     def on_update(self, delta_time):
         """movement and game logic"""

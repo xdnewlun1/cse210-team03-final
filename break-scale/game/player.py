@@ -13,6 +13,20 @@ class Player(arcade.Sprite):
         self.center_x = 400
         self.center_y = 50
 
+    def on_key_press(self, key, modifier):
+        if key == arcade.key.LEFT or key == arcade.key.A:
+            self.change_x = - constants.PLAYER_MOVEMENT_SPEED
+        elif key == arcade.key.RIGHT or key == arcade.key.D:
+            self.change_x = constants.PLAYER_MOVEMENT_SPEED
+        elif key == arcade.key.ESCAPE:
+            arcade.exit()
+            
+    def on_key_release(self, key, modifier):
+        if key == arcade.key.LEFT or key == arcade.key.A:
+            self.change_x = 0
+        elif key == arcade.key.RIGHT or key == arcade.key.D:
+            self.change_x = 0
+
     def update(self):
         """ Move the player """
         # Move player
