@@ -85,6 +85,7 @@ class GameView(arcade.View):
         
         #don't show the mouse pointer # snowflake ex
         self.window.set_mouse_visible(False)
+        #   ^.window for mouse invisible whole game
 
         # set up the background
         #arcade.set_background_color(arcade.csscolor.CORNFLOWER_BLUE)

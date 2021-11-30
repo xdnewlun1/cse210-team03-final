@@ -16,6 +16,9 @@ APPLE_SPRITE = PATH + "/resources/images/food/Apple_sprite.png"
 CARROT_SPRITE = PATH + "/resources/images/food/Carrot_sprite.png"
 DONUT_SPRITE = PATH + "/resources/images/food/Donut_sprite.png"
 PIZZA_SPRITE = PATH + "/resources/images/food/Pizza_sprite.png"
+OPEN_GAME_SPRITE = PATH + "/resources/images/background/Open_Game_Sprite.png"
+INSTRUCTIONS_SPRITE = PATH + "/resources/images/background/Instructions_Sprite.png"
+
 
 #SCOREBOARD FILE
 SCOREBOARD_FILE = PATH + "/resources/scoreboard.csv"
@@ -30,6 +33,8 @@ PLAYER_MOVEMENT_SPEED = 5
 #APPLE_COUNT = 50
 FOOD_FALL_SPEED = 0.25
 
+DEFAULT_FONT = "Kenney Blocks"
+DEFAULT_FONT_SIZE = 20
 # PLAYER STARTING POSITION
 
 # LAYER NAMES FROM TILEMAP
