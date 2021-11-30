@@ -34,21 +34,24 @@ class GameOver(arcade.View):
         """ Draw this view """
         arcade.start_render()
         arcade.set_background_color(arcade.color.PURPLE)
-        print("Got To Draw!")
         #self.texture.draw_sized(constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT / 2,
         #                        constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT)
         arcade.draw_text("Scoreboard", 10, constants.SCREEN_HEIGHT - 100, arcade.color.BLACK, 79, width=400, align="center", font_name="Kenney Blocks")
+        i = 0
         for item in self.score_list:
             if '_' in item[0]:
-                arcade.draw_text(self.new_name, 10, constants.SCREEN_HEIGHT - (100 + (40 * (self.score_list.index(item) + 1))), arcade.color.BLACK, 25, width=200, align="left", font_name="Kenney Blocks")
+                arcade.draw_text(self.new_name, 10, constants.SCREEN_HEIGHT - (100 + (40 * (i + 1))), arcade.color.BLACK, 25, width=200, align="left", font_name="Kenney Blocks")
             else:
-                arcade.draw_text(item[0].capitalize(), 10, constants.SCREEN_HEIGHT - (100 + (40 * (self.score_list.index(item) + 1))), arcade.color.BLACK, 25, width=200, align="left", font_name="Kenney Blocks")
+                arcade.draw_text(item[0].capitalize(), 10, constants.SCREEN_HEIGHT - (100 + (40 * (i + 1))), arcade.color.BLACK, 25, width=200, align="left", font_name="Kenney Blocks")
+            i += 1
+        i = 0
         for item in self.score_list:
             time = (f"{item[1]}:{item[2]}")
             if(self.score_list.index(item) == 0):
-                arcade.draw_text(time, 242, constants.SCREEN_HEIGHT - (100 + (40 * (self.score_list.index(item) + 1))), arcade.color.BLACK, 25, width=200, align="left", font_name="Kenney Blocks")
+                arcade.draw_text(time, 242, constants.SCREEN_HEIGHT - (100 + (40 * (i + 1))), arcade.color.BLACK, 25, width=200, align="left", font_name="Kenney Blocks")
             else:
-                arcade.draw_text(time, 300, constants.SCREEN_HEIGHT - (100 + (40 * (self.score_list.index(item) + 1))), arcade.color.BLACK, 25, width=200, align="left", font_name="Kenney Blocks")
+                arcade.draw_text(time, 300, constants.SCREEN_HEIGHT - (100 + (40 * (i + 1))), arcade.color.BLACK, 25, width=200, align="left", font_name="Kenney Blocks")
+            i += 1
         
         self.not_ready = False
         for item in self.score_list:
@@ -90,7 +93,8 @@ class GameOver(arcade.View):
     def check_scoreboard(self):
         new_time = ["___", self.minutes, self.sec]
         self.score_list.append(new_time)
-        self.score_list = sorted(self.score_list[1:], key=itemgetter(1,2), reverse=True)
+        self.score_list = sorted(self.score_list[1:], key=itemgetter(1,2,0), reverse=True)
+        print(self.score_list)
         self.score_list.insert(0, ["name", "min", "sec"])
         if len(self.score_list) > 11:
             self.score_list.remove(self.score_list[11])
