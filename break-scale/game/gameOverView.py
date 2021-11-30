@@ -84,8 +84,6 @@ class GameOver(arcade.View):
                 if item[0] == "___":
                     item[0] = self.new_name
             self.update_scoreboard()
-            
-
 
     def on_update(self, delta_time):
         pass

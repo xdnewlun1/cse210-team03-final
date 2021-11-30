@@ -16,15 +16,13 @@ class MenuView(arcade.View):
         arcade.start_render()
         self.texture.draw_sized(constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT / 2, constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT)
         arcade.draw_text(constants.SCREEN_TITLE, self.window.width / 2-2, self.window.height / 2+210,
-                         arcade.color.BLACK, font_size=25, anchor_x="center",font_name= constants.DEFAULT_FONT, bold= True)
+                        arcade.color.BLACK, font_size=25, anchor_x="center",font_name= constants.DEFAULT_FONT, bold= True)
         arcade.draw_text("Click I for Instructions", self.window.width / 2+113, self.window.height / 2-25,
-                         arcade.color.BLACK, font_size=12, anchor_x="center",font_name= constants.DEFAULT_FONT)
+                        arcade.color.BLACK, font_size=12, anchor_x="center",font_name= constants.DEFAULT_FONT)
         arcade.draw_text("Click Spacebar to play", self.window.width / 2+113, self.window.height / 2-75,
-                         arcade.color.BLACK, font_size=12, anchor_x="center",font_name= constants.DEFAULT_FONT)
+                        arcade.color.BLACK, font_size=12, anchor_x="center",font_name= constants.DEFAULT_FONT)
         arcade.draw_text("Click Esc to exit game", self.window.width / 2+113, self.window.height / 2-50,
-                         arcade.color.BLACK, font_size=12, anchor_x="center",font_name= constants.DEFAULT_FONT)
-
-        
+                        arcade.color.BLACK, font_size=12, anchor_x="center",font_name= constants.DEFAULT_FONT)
 
     def on_key_press(self, key, modifiers):
         if key == arcade.key.SPACE:
