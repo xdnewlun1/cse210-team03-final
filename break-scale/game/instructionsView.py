@@ -49,6 +49,5 @@ class InstructionsView(arcade.View):
             game_view.setup()
             self.window.show_view(game_view)
     
-             
         elif key == arcade.key.ESCAPE:
             arcade.exit()
