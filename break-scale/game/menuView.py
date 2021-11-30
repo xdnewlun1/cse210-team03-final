@@ -1,6 +1,6 @@
 import arcade
 from game import constants
-from game.director import GameView
+from game.gameView import GameView
 from game.instructionsView import InstructionsView
 
 class MenuView(arcade.View):

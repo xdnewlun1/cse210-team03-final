@@ -1,6 +1,6 @@
 import arcade
 from game import constants
-from game.director import GameView
+from game.gameView import GameView
 
 class InstructionsView(arcade.View):
     """This is to show different views for a windows
