@@ -19,7 +19,6 @@ PIZZA_SPRITE = PATH + "/resources/images/food/Pizza_sprite.png"
 OPEN_GAME_SPRITE = PATH + "/resources/images/background/Open_Game_Sprite.png"
 INSTRUCTIONS_SPRITE = PATH + "/resources/images/background/Instructions_Sprite.png"
 
-
 #SCOREBOARD FILE
 SCOREBOARD_FILE = PATH + "/resources/scoreboard.csv"
 
@@ -29,15 +28,12 @@ GRAVITY = 1
 PLAYER_MOVEMENT_SPEED = 5
 
 # FOOD COUNT 
-#FOOD_COUNT = 250
-#APPLE_COUNT = 50
+# FOOD_COUNT = 50
+# APPLE_COUNT = 15
 FOOD_FALL_SPEED = 0.25
 
 DEFAULT_FONT = "Kenney Blocks"
 DEFAULT_FONT_SIZE = 20
 # PLAYER STARTING POSITION
 
-# LAYER NAMES FROM TILEMAP
 
-# file path
-#PATH = os.path.dirname(os.path.abspath(__file__))
