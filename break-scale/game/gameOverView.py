@@ -13,6 +13,7 @@ class GameOver(arcade.View):
         self.minutes = minutes
         self.new_name = "___"
         self.sec = sec
+        print("Opened GameEndScreen")
         #self.texture = arcade.load_texture(constants.PLAYER_SPRITE)
 
         # Reset the viewport, necessary if we have a scrolling game and we need
@@ -32,6 +33,8 @@ class GameOver(arcade.View):
     def on_draw(self):
         """ Draw this view """
         arcade.start_render()
+        arcade.set_background_color(arcade.color.PURPLE)
+        print("Got To Draw!")
         #self.texture.draw_sized(constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT / 2,
         #                        constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT)
         arcade.draw_text("Scoreboard", 10, constants.SCREEN_HEIGHT - 100, arcade.color.BLACK, 79, width=400, align="center", font_name="Kenney Blocks")
