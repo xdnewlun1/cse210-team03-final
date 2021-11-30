@@ -32,11 +32,10 @@ class GameView(arcade.View):
         self.score = 150
 
         # set background color or set the tileMap
-        #arcade.set_background_color(arcade.csscolor.CORNFLOWER_BLUE)
+        arcade.set_background_color(arcade.csscolor.CORNFLOWER_BLUE)
 
     def setup(self):
         """set up the game here. call this function to restart the game """
-        # setup the cameras
         
         # sprite list create the object instance for individual 
         self.player_list = arcade.SpriteList()
@@ -58,28 +57,6 @@ class GameView(arcade.View):
         self.create_carrot()
         self.create_donut()
         self.create_pizza()
-        
-
-        # create the ground 
-        # this shows using a loop to place multiple sprites horizontally 
-
-        # create the trees on the ground
-        # this shows using a coordinate list to place sprites. 
-        # create the physics engine 
-
-        # --- set up the wall instance
-        # create horizontal rows of boxes
-            # top edges
-            # bottom edges
-        # create vertical columns of boxes
-            # left
-            # right
-            # create a box in the middle 
-
-        # create the food instance
-            # create it need width and height
-            # position the food need center x and center y
-            # add the food to the list
 
         # explosion 
         
@@ -88,13 +65,11 @@ class GameView(arcade.View):
         #   ^.window for mouse invisible whole game
 
         # set up the background
-        #arcade.set_background_color(arcade.csscolor.CORNFLOWER_BLUE)
+        arcade.set_background_color(arcade.csscolor.CORNFLOWER_BLUE)
 
         # create the physics engine by setting it to arcades physcis engine
         # and adding the player sprite and the scene sprite list to walls
         self.physics_engine = arcade.PhysicsEngineSimple(self.player_sprite, self.wall_list)
-        
-
 
     def on_draw(self):
         """render the screen"""
@@ -129,11 +104,9 @@ class GameView(arcade.View):
 
     def on_update(self, delta_time):
         """movement and game logic"""
-        # position the camera
-        
-        self.player_list.update()
         
         # Generate a list of all sprites that collided with the player.
+        self.player_list.update()
         self.apple_list.update()
         self.donut_list.update()
         self.pizza_list.update()
@@ -156,25 +129,22 @@ class GameView(arcade.View):
         self.donut_collision()
         self.pizza_collision()
 
-        
+        # physics engine
         self.physics_engine.update()
 
     def check_health(self,score):
-        if self.score >= 1000:
+        if self.score >= 600:
             view = GameOver(self.minutes, self.seconds)
             self.window.show_view(view)
             
 
     def create_apple(self):
         for a in range(20):
-            #create the apple instane
-            # apple image from ???
+            #create the apple instane by Zach
             apple = Apple(constants.APPLE_SPRITE, constants.FOOD_SCALING)
             # position the apple
             apple.center_x = random.randrange(constants.SCREEN_WIDTH)
             apple.center_y = random.randrange(constants.SCREEN_HEIGHT)
-            #apple.speed = random.randrange(30,40)
-            #self.all_sprites_list.append(apple)
             self.apple_list.append(apple)
     
     def create_donut(self):
@@ -197,25 +167,28 @@ class GameView(arcade.View):
             pizza.center_x = random.randrange(constants.SCREEN_WIDTH)
             pizza.center_y = random.randrange(constants.SCREEN_HEIGHT)
             self.pizza_list.append(pizza)
+
     def apple_collision(self):
-    #loop through each food  see if we hit  change it, and add to score if any and remove it 
         apple_hit = arcade.check_for_collision_with_list(self.player_sprite, self.apple_list)
         for apple in apple_hit:
             apple.remove_from_sprite_lists()
             self.score += 1
             self.check_health(self.score)
+
     def donut_collision(self):   
         donut_hit = arcade.check_for_collision_with_list(self.player_sprite, self.donut_list)
         for donut in donut_hit:
             donut.reset_pos()
             self.score += 15
             self.check_health(self.score)
+
     def pizza_collision(self):
         pizza_hit = arcade.check_for_collision_with_list(self.player_sprite, self.pizza_list)
         for pizza in pizza_hit:
             pizza.reset_pos()
             self.score += 10
             self.check_health(self.score)
+            
     def carrot_collision(self):
         carrot_hit = arcade.check_for_collision_with_list(self.player_sprite, self.carrot_list)
         for carrot in carrot_hit:
