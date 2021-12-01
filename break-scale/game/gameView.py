@@ -53,7 +53,10 @@ class GameView(arcade.View):
         self.player_sprite = Player()
         self.player_list.append(self.player_sprite)
 
-        self.create_apple()
+        self.apple_sprite = Apple()
+        self.apple_list.append(self.apple_sprite)
+
+        #self.create_apple()
         self.create_carrot()
         self.create_donut()
         self.create_pizza()
@@ -138,14 +141,7 @@ class GameView(arcade.View):
             self.window.show_view(view)
             
 
-    def create_apple(self):
-        for a in range(20):
-            #create the apple instane by Zach
-            apple = Apple(constants.APPLE_SPRITE, constants.FOOD_SCALING)
-            # position the apple
-            apple.center_x = random.randrange(constants.SCREEN_WIDTH)
-            apple.center_y = random.randrange(constants.SCREEN_HEIGHT)
-            self.apple_list.append(apple)
+    
     
     def create_donut(self):
         for d in range(20):

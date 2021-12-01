@@ -7,6 +7,18 @@ class Apple(arcade.Sprite):
     """This class represents the food on our screen. it is a child class
     of the arcade library Sprite class"""
 
+    def __init__(self) : 
+        super().__init__(constants.APPLE_SPRITE, constants.FOOD_SCALING)
+
+    def create_apple(self):
+        for a in range(20):
+            #create the apple instane by Zach
+            apple = Apple(constants.APPLE_SPRITE, constants.FOOD_SCALING)
+            # position the apple
+            apple.center_x = random.randrange(constants.SCREEN_WIDTH)
+            apple.center_y = random.randrange(constants.SCREEN_HEIGHT)
+            #self.apple_list.append(apple)
+
     def update(self):
             # define update to move the food 
         """move the food and see if the food has fallen off the 
