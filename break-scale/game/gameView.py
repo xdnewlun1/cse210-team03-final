@@ -1,11 +1,9 @@
 import arcade
-import os
 from game import constants 
-from game.foodApple import Apple
+from game.apple import Apple
 from game.player import Player
 from game.gameOverView import GameOver
 import random
-import math
 from game.donut import Donut
 from game.carrot import Carrot
 from game.pizza import Pizza
@@ -53,10 +51,7 @@ class GameView(arcade.View):
         self.player_sprite = Player()
         self.player_list.append(self.player_sprite)
 
-        self.apple_sprite = Apple()
-        self.apple_list.append(self.apple_sprite)
-
-        #self.create_apple()
+        self.create_apple()
         self.create_carrot()
         self.create_donut()
         self.create_pizza()
@@ -90,11 +85,6 @@ class GameView(arcade.View):
 
         # set up timer output the time text
         arcade.draw_text(self.timer_output, 10, 560, arcade.color.WHITE, 16)
-
-        # put instructions on screen 
-        # instructions = "Move left or right arrows to get eat food"
-        # arcade.draw_text(instructions, 10,90, arcade.color.WHITE,12)
-
 
     def on_key_press(self, key, modifiers):
         """ called whenever a key on the keyboard is pressed
@@ -140,7 +130,11 @@ class GameView(arcade.View):
             view = GameOver(self.minutes, self.seconds)
             self.window.show_view(view)
             
-
+    def create_apple(self):
+        for a in range(20):
+            # Image create by Zach 
+            apple = Apple()
+            self.apple_list.append(apple)
     
     
     def create_donut(self):
