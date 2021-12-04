@@ -10,6 +10,8 @@ class InstructionsView(arcade.View):
         super().__init__()
         """ This is run once when we switch to this view """
         self.texture = arcade.load_texture(constants.INSTRUCTIONS_SPRITE)
+        # Add Sound
+        self.click_sound = arcade.load_sound(constants.CLICK_SOUND)
 
     def on_show(self):
         """ This is run once when we switch to this view """
@@ -42,9 +44,11 @@ class InstructionsView(arcade.View):
     def on_key_press(self, key, modifiers):
 
         if key == arcade.key.SPACE:
+            arcade.play_sound(self.click_sound)
             game_view = GameView()
             game_view.setup()
             self.window.show_view(game_view)
     
         elif key == arcade.key.ESCAPE:
+            arcade.play_sound(self.click_sound)
             arcade.exit()

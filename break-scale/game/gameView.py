@@ -35,6 +35,9 @@ class GameView(arcade.View):
         self.score = 150 starting weight
         """
         super().__init__()
+        #Add the Music
+        self.background_music = arcade.load_sound(constants.BACKGROUND_MUSIC, True)
+        self.chewing = arcade.load_sound(constants.CHEWING)
 
         # Each sprite should go into a list set to none 
         self.player_list = None
@@ -67,6 +70,7 @@ class GameView(arcade.View):
         self.wall_list = arcade.SpriteList(use_spatial_hash= True)
         
         self.timer = 0.0
+        arcade.play_sound(self.background_music, 0.1, 0, True)
 
         # keep track of score
         self.score = 150 #set to zero here and in initialize 
@@ -187,8 +191,9 @@ class GameView(arcade.View):
         """determines collision of player sprite and food """
         apple_hit = arcade.check_for_collision_with_list(self.player_sprite, self.apple_list)
         for apple in apple_hit:
+            arcade.play_sound(self.chewing, 0.05)
             apple.remove_from_sprite_lists()
-            self.score += 5
+            self.score += 1
             self.check_health(self.score)
 
     # def barbell_collision(self):
@@ -203,14 +208,16 @@ class GameView(arcade.View):
         """determines collision of player sprite and food """
         carrot_hit = arcade.check_for_collision_with_list(self.player_sprite, self.carrot_list)
         for carrot in carrot_hit:
+            arcade.play_sound(self.chewing, 0.05)
             carrot.reset_pos()
-            self.score += 1
+            self.score += 5
             self.check_health(self.score)
 
     def donut_collision(self):   
         """determines collision of player sprite and food """
         donut_hit = arcade.check_for_collision_with_list(self.player_sprite, self.donut_list)
         for donut in donut_hit:
+            arcade.play_sound(self.chewing, 0.05)
             donut.reset_pos()
             self.score += 15
             self.check_health(self.score)
@@ -219,8 +226,9 @@ class GameView(arcade.View):
         """determines collision of player sprite and food """
         pizza_hit = arcade.check_for_collision_with_list(self.player_sprite, self.pizza_list)
         for pizza in pizza_hit:
+            arcade.play_sound(self.chewing, 0.05)
             pizza.reset_pos()
             self.score += 10
             self.check_health(self.score)
             
-    
+
