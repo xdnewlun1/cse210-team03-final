@@ -6,9 +6,6 @@ from game.carrot import Carrot
 from game.donut import Donut
 from game.gameOverView import GameOver
 from game.player import Player
-
-
-
 from game.pizza import Pizza
 
 
