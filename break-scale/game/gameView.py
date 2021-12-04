@@ -192,7 +192,7 @@ class GameView(arcade.View):
         apple_hit = arcade.check_for_collision_with_list(self.player_sprite, self.apple_list)
         for apple in apple_hit:
             arcade.play_sound(self.chewing, 0.05)
-            apple.remove_from_sprite_lists()
+            apple.reset_pos()
             self.score += 1
             self.check_health(self.score)
 

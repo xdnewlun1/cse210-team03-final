@@ -7,12 +7,15 @@ class Player(arcade.Sprite):
     of the arcade library Sprite class"""
 
     def __init__(self) : 
+        """The class constructor."""
         super().__init__(constants.PLAYER_SPRITE, constants.CHARACTER_SCALING/2)
         # location of player
         self.center_x = 400
         self.center_y = 50
 
     def on_key_press(self, key, modifier):
+        """ called whenever a key on the keyboard is pressed
+        for a list of keys, see:https://api.arcade.academy/en/latest/arcade.key.html """
         if key == arcade.key.LEFT or key == arcade.key.A:
             self.change_x = - constants.PLAYER_MOVEMENT_SPEED
         elif key == arcade.key.RIGHT or key == arcade.key.D:
@@ -21,6 +24,8 @@ class Player(arcade.Sprite):
             arcade.exit()
             
     def on_key_release(self, key, modifier):
+        """ called whenever the user lets off a previously pressed key basically stops the player from moving"""
+      
         if key == arcade.key.LEFT or key == arcade.key.A:
             self.change_x = 0
         elif key == arcade.key.RIGHT or key == arcade.key.D:

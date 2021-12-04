@@ -42,6 +42,8 @@ class InstructionsView(arcade.View):
                         arcade.color.RED, font_size=14, anchor_x="center",font_name= constants.DEFAULT_FONT)
 
     def on_key_press(self, key, modifiers):
+        """ called whenever a key on the keyboard is pressed
+        for a list of keys, see:https://api.arcade.academy/en/latest/arcade.key.html """
 
         if key == arcade.key.SPACE:
             arcade.play_sound(self.click_sound)
