@@ -12,6 +12,7 @@ class GameView(arcade.View):
     def __init__(self):
         """Set up the game . Call this function to restart the game """
         super().__init__()
+        #Add the Sound
 
         # Each sprite should go into a list set to none 
         self.player_list = None

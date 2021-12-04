@@ -15,6 +15,7 @@ class GameOver(arcade.View):
         self.sec = sec
         self.text_color = arcade.color.BLACK
         self.back_color = arcade.color.PURPLE
+        self.click_sound = arcade.load_sound(constants.CLICK_SOUND)
 
         # Reset the viewport, necessary if we have a scrolling game and we need
         # to reset the viewport back to the start so we can see what we draw.
@@ -83,12 +84,18 @@ class GameOver(arcade.View):
             If you press enter and the final character of self.new_name doesnt equal "_" then it will officially set the name in the score_list and update the scoreboard file.
         """
         if key >= 97 and key <= 122:
-            self.new_name = self.new_name.replace("_", chr(key), 1)
+            for item in self.score_list:
+                if '_' in item[0]:
+                    arcade.play_sound(self.click_sound)
+                    self.new_name = self.new_name.replace("_", chr(key), 1)
         if key == arcade.key.ESCAPE:
+            arcade.play_sound(self.click_sound)
             arcade.exit()
         if key == arcade.key.BACKSPACE:
+            arcade.play_sound(self.click_sound)
             self.new_name = "___"
         if key == arcade.key.ENTER and self.new_name[2] != "_":
+            arcade.play_sound(self.click_sound)
             for item in self.score_list:
                 if item[0] == "___":
                     item[0] = self.new_name

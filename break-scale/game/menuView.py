@@ -10,6 +10,7 @@ class MenuView(arcade.View):
         super().__init__()
         """ This is run once when we switch to this view """
         self.texture = arcade.load_texture(constants.OPEN_GAME_SPRITE)
+        self.click_sound = arcade.load_sound(constants.CLICK_SOUND)
     
     def on_draw(self):
         """ Draw this view """
@@ -26,11 +27,14 @@ class MenuView(arcade.View):
 
     def on_key_press(self, key, modifiers):
         if key == arcade.key.SPACE:
+            arcade.play_sound(self.click_sound)
             game_view = GameView()
             game_view.setup()
             self.window.show_view(game_view)
         elif key == arcade.key.I:
+            arcade.play_sound(self.click_sound)
             game_view = InstructionsView()
             self.window.show_view(game_view)
         elif key == arcade.key.ESCAPE:
+            arcade.play_sound(self.click_sound)
             arcade.exit()
