@@ -2,7 +2,6 @@ import arcade
 from game import constants
 import random
 
-
 class Donut(arcade.Sprite): 
     """This class represents the food on our screen. it is a child class
     of the arcade library Sprite class"""

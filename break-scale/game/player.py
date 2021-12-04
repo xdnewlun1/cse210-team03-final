@@ -6,7 +6,6 @@ class Player(arcade.Sprite):
     """This class represents the player on our screen. it is a child class
     of the arcade library Sprite class"""
 
-    # Set up parent class
     def __init__(self) : 
         super().__init__(constants.PLAYER_SPRITE, constants.CHARACTER_SCALING/2)
         # location of player
