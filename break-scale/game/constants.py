@@ -38,3 +38,4 @@ DEFAULT_FONT_SIZE = 20
 
 #Sounds
 CLICK_SOUND = PATH + "/resources/sounds/click.mp3"
+BACKGROUND_MUSIC = PATH + "/resources/sounds/background_music.mp3"

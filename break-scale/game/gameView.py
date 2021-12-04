@@ -12,7 +12,8 @@ class GameView(arcade.View):
     def __init__(self):
         """Set up the game . Call this function to restart the game """
         super().__init__()
-        #Add the Sound
+        #Add the Music
+        self.background_music = arcade.load_sound(constants.BACKGROUND_MUSIC, True)
 
         # Each sprite should go into a list set to none 
         self.player_list = None
@@ -41,6 +42,7 @@ class GameView(arcade.View):
         self.pizza_list = arcade.SpriteList()
         self.carrot_list = arcade.SpriteList()
         self.timer = 0.0
+        arcade.play_sound(self.background_music, 0.1, 0, True)
 
         # keep track of score
         self.score = 150 #set to zero here and in initialize 
