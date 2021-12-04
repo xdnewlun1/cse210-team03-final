@@ -37,4 +37,7 @@ DEFAULT_FONT = "Kenney Blocks"
 DEFAULT_FONT_SIZE = 20
 # PLAYER STARTING POSITION
 
-
+#Sounds
+CLICK_SOUND = PATH + "/resources/sounds/click.mp3"
+BACKGROUND_MUSIC = PATH + "/resources/sounds/background_music.mp3"
+CHEWING = PATH + "/resources/sounds/chewing.mp3"

@@ -23,3 +23,10 @@ MENU
 https://opengameart.org/content/main-menu-panel
 
 victory sound from realpython.com 
+
+
+Game End sound - Explosion Noise
+Sound Eat Something
+Light Background Music
+Clicking When a button is pressed
+--CHECK ARCADE SOUND LIST--
