@@ -1,5 +1,4 @@
 from game import constants
-#from game.director import GameView
 import arcade
 import csv
 from operator import itemgetter
@@ -28,8 +27,6 @@ class GameOver(arcade.View):
             item[2] = int(item[2])
         self.check_scoreboard()
         
-
-
     def on_draw(self):
         """ Draw this view """
         arcade.start_render()

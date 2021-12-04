@@ -13,7 +13,6 @@ class InstructionsView(arcade.View):
 
     def on_show(self):
         """ This is run once when we switch to this view """
-
     
     def on_draw(self):
         """ Draw this view """
@@ -41,9 +40,7 @@ class InstructionsView(arcade.View):
                         arcade.color.RED, font_size=14, anchor_x="center",font_name= constants.DEFAULT_FONT)
 
     def on_key_press(self, key, modifiers):
-    #     if key == arcade.key.B:
-    #         game_view = GameView()
-    #         self.window.show_view(game_view)
+
         if key == arcade.key.SPACE:
             game_view = GameView()
             game_view.setup()
