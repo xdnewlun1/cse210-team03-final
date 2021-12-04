@@ -3,7 +3,6 @@ from game import constants
 from game.apple import Apple
 from game.player import Player
 from game.gameOverView import GameOver
-import random
 from game.donut import Donut
 from game.carrot import Carrot
 from game.pizza import Pizza
@@ -12,7 +11,6 @@ from game.pizza import Pizza
 class GameView(arcade.View):
     def __init__(self):
         """Set up the game . Call this function to restart the game """
-        # call the parent class and set up the window 
         super().__init__()
 
         # Each sprite should go into a list set to none 
@@ -34,7 +32,6 @@ class GameView(arcade.View):
 
     def setup(self):
         """set up the game here. call this function to restart the game """
-        
         # sprite list create the object instance for individual 
         self.player_list = arcade.SpriteList()
         self.apple_list = arcade.SpriteList()
@@ -60,18 +57,15 @@ class GameView(arcade.View):
         
         #don't show the mouse pointer # snowflake ex
         self.window.set_mouse_visible(False)
-        #   ^.window for mouse invisible whole game
 
         # set up the background
         arcade.set_background_color(arcade.csscolor.CORNFLOWER_BLUE)
 
         # create the physics engine by setting it to arcades physcis engine
-        # and adding the player sprite and the scene sprite list to walls
         self.physics_engine = arcade.PhysicsEngineSimple(self.player_sprite, self.wall_list)
 
     def on_draw(self):
-        """render the screen"""
-        # clear the screen to the background color
+        """render the screen and draw the sprites"""
         arcade.start_render()
         self.apple_list.draw()
         self.player_list.draw()
@@ -97,7 +91,6 @@ class GameView(arcade.View):
 
     def on_update(self, delta_time):
         """movement and game logic"""
-        
         # Generate a list of all sprites that collided with the player.
         self.player_list.update()
         self.apple_list.update()
@@ -146,13 +139,9 @@ class GameView(arcade.View):
             donut = Donut()
             self.donut_list.append(donut)
 
-    
-            
     def create_pizza(self): 
         for p in range(20):
-            pizza = Pizza(constants.PIZZA_SPRITE,constants.FOOD_SCALING)
-            pizza.center_x = random.randrange(constants.SCREEN_WIDTH)
-            pizza.center_y = random.randrange(constants.SCREEN_HEIGHT)
+            pizza = Pizza()
             self.pizza_list.append(pizza)
 
     def apple_collision(self):
@@ -182,9 +171,3 @@ class GameView(arcade.View):
             carrot.reset_pos()
             self.score += 5
             self.check_health(self.score)
-
-    
-            
-
-
-        
