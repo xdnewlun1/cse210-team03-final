@@ -1,11 +1,16 @@
 import arcade
 from game import constants 
 from game.apple import Apple
-from game.player import Player
-from game.gameOverView import GameOver
-from game.donut import Donut
+#from game.barbell import Barbell
 from game.carrot import Carrot
+from game.donut import Donut
+from game.gameOverView import GameOver
+from game.player import Player
+
+
+
 from game.pizza import Pizza
+
 
 
 class GameView(arcade.View):
@@ -19,10 +24,12 @@ class GameView(arcade.View):
         # Each sprite should go into a list set to none 
         self.player_list = None
         self.apple_list = None
-        self.wall_list = None
+        #self.barbell_list = None
+        self.carrot_list = None
         self.donut_list = None
         self.pizza_list = None
-        self.carrot_list = None
+        self.wall_list = None
+        
         self.timer = 0.0
         self.timer_output = "00:00:00"
 
@@ -38,10 +45,12 @@ class GameView(arcade.View):
         # sprite list create the object instance for individual 
         self.player_list = arcade.SpriteList()
         self.apple_list = arcade.SpriteList()
-        self.wall_list = arcade.SpriteList(use_spatial_hash= True)
+        #self.barbell_list = arcade.SpriteList()
+        self.carrot_list = arcade.SpriteList()
         self.donut_list = arcade.SpriteList()
         self.pizza_list = arcade.SpriteList()
-        self.carrot_list = arcade.SpriteList()
+        self.wall_list = arcade.SpriteList(use_spatial_hash= True)
+        
         self.timer = 0.0
         arcade.play_sound(self.background_music, 0.1, 0, True)
 
@@ -56,6 +65,7 @@ class GameView(arcade.View):
         self.create_carrot()
         self.create_donut()
         self.create_pizza()
+        #self.create_barbell()
 
         # explosion 
         
@@ -133,6 +143,11 @@ class GameView(arcade.View):
             apple = Apple()
             self.apple_list.append(apple)
 
+    # def create_barbell(self):
+    #     for a in range(5):
+    #         barbell = Barbell()
+    #         self.barbell_list.append(barbell)
+
     def create_carrot(self):
         for c in range(20):
             carrot = Carrot()
@@ -156,6 +171,21 @@ class GameView(arcade.View):
             self.score += 1
             self.check_health(self.score)
 
+    # def barbell_collision(self):
+    #     barbell_hit = arcade.check_for_collision_with_list(self.player_sprite, self.barbell_list)
+    #     for barbell in barbell_hit:
+    #         barbell.reset_pos()
+    #         self.score -= 5
+    #         self.check_health(self.score)
+
+    def carrot_collision(self):
+        carrot_hit = arcade.check_for_collision_with_list(self.player_sprite, self.carrot_list)
+        for carrot in carrot_hit:
+            arcade.play_sound(self.chewing, 0.05)
+            carrot.reset_pos()
+            self.score += 5
+            self.check_health(self.score)
+
     def donut_collision(self):   
         donut_hit = arcade.check_for_collision_with_list(self.player_sprite, self.donut_list)
         for donut in donut_hit:
@@ -172,10 +202,4 @@ class GameView(arcade.View):
             self.score += 10
             self.check_health(self.score)
             
-    def carrot_collision(self):
-        carrot_hit = arcade.check_for_collision_with_list(self.player_sprite, self.carrot_list)
-        for carrot in carrot_hit:
-            arcade.play_sound(self.chewing, 0.05)
-            carrot.reset_pos()
-            self.score += 5
-            self.check_health(self.score)
+

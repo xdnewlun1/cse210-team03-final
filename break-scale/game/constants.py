@@ -12,10 +12,11 @@ FOOD_SCALING = 0.5
 #Sprites
 PATH = os.path.dirname(os.path.abspath(__file__))
 PLAYER_SPRITE = PATH + "/resources/images/player/test_player1.png"
-APPLE_SPRITE = PATH + "/resources/images/food/Apple_sprite.png"
-CARROT_SPRITE = PATH + "/resources/images/food/Carrot_sprite.png"
-DONUT_SPRITE = PATH + "/resources/images/food/Donut_sprite.png"
-PIZZA_SPRITE = PATH + "/resources/images/food/Pizza_sprite.png"
+APPLE_SPRITE = PATH + "/resources/images/food/apple_sprite.png"
+#BARBELL_SPRITE = PATH + "/resources/images/food/barbell_sprite.png"
+CARROT_SPRITE = PATH + "/resources/images/food/carrot_sprite.png"
+DONUT_SPRITE = PATH + "/resources/images/food/donut_sprite.png"
+PIZZA_SPRITE = PATH + "/resources/images/food/pizza_sprite.png"
 OPEN_GAME_SPRITE = PATH + "/resources/images/background/Open_Game_Sprite.png"
 INSTRUCTIONS_SPRITE = PATH + "/resources/images/background/Instructions_Sprite.png"
 
