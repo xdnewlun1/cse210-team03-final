@@ -143,9 +143,7 @@ class GameView(arcade.View):
     
     def create_donut(self):
         for d in range(20):
-            donut = Donut(constants.DONUT_SPRITE,constants.FOOD_SCALING)
-            donut.center_x = random.randrange(constants.SCREEN_WIDTH)
-            donut.center_y = random.randrange(constants.SCREEN_HEIGHT)
+            donut = Donut()
             self.donut_list.append(donut)
 
     
