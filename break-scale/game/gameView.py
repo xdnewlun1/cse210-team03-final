@@ -11,8 +11,29 @@ from game.pizza import Pizza
 
 
 class GameView(arcade.View):
+    """A code template for a person who directs the game. The responsibility of 
+    this class of objects is to control the sequence of play.
+    
+    Stereotype:
+        Controller
+
+    """
     def __init__(self):
-        """Set up the game . Call this function to restart the game """
+        """The class constructor.
+        
+        Args:
+        player_list The player sprite 
+        self.apple_list SpriteList - list of food set to None
+        #self.barbell_list SpriteList - list of food set to None
+        self.carrot_list SpriteList - list of food set to None
+        self.donut_list SpriteList - list of food set to None
+        self.pizza_list SpriteList - list of food set to None
+        self.wall_list SpriteList - list of food set to None
+        self.timer to track the time spent on the game set to zero
+        self.timer_output = "00:00:00"
+        self.player_sprite The player sprite 
+        self.score = 150 starting weight
+        """
         super().__init__()
 
         # Each sprite should go into a list set to none 
@@ -126,44 +147,52 @@ class GameView(arcade.View):
         self.physics_engine.update()
 
     def check_health(self,score):
+        """Checks the weight of the player to determines gameOver"""
         if self.score >= 600:
             view = GameOver(self.minutes, self.seconds)
             self.window.show_view(view)
             
     def create_apple(self):
+        """Creates the apple"""
         for a in range(20):
             # Image create by Zach 
             apple = Apple()
             self.apple_list.append(apple)
 
     # def create_barbell(self):
+    """Creates the barbell"""
     #     for a in range(5):
     #         barbell = Barbell()
     #         self.barbell_list.append(barbell)
 
     def create_carrot(self):
+        """Creates the carrot """
         for c in range(20):
             carrot = Carrot()
             self.carrot_list.append(carrot)
     
     def create_donut(self):
+        """Creates the donut """
         for d in range(20):
             donut = Donut()
             self.donut_list.append(donut)
 
     def create_pizza(self): 
+        """Creates the pizza"""
         for p in range(20):
             pizza = Pizza()
             self.pizza_list.append(pizza)
 
     def apple_collision(self):
+        """determines collision of player sprite and food """
         apple_hit = arcade.check_for_collision_with_list(self.player_sprite, self.apple_list)
         for apple in apple_hit:
             apple.remove_from_sprite_lists()
-            self.score += 1
+            self.score += 5
             self.check_health(self.score)
 
     # def barbell_collision(self):
+    """determines collision of player sprite and food """
     #     barbell_hit = arcade.check_for_collision_with_list(self.player_sprite, self.barbell_list)
     #     for barbell in barbell_hit:
     #         barbell.reset_pos()
@@ -171,6 +200,7 @@ class GameView(arcade.View):
     #         self.check_health(self.score)
 
     def carrot_collision(self):
+        """determines collision of player sprite and food """
         carrot_hit = arcade.check_for_collision_with_list(self.player_sprite, self.carrot_list)
         for carrot in carrot_hit:
             carrot.reset_pos()
@@ -178,6 +208,7 @@ class GameView(arcade.View):
             self.check_health(self.score)
 
     def donut_collision(self):   
+        """determines collision of player sprite and food """
         donut_hit = arcade.check_for_collision_with_list(self.player_sprite, self.donut_list)
         for donut in donut_hit:
             donut.reset_pos()
@@ -185,6 +216,7 @@ class GameView(arcade.View):
             self.check_health(self.score)
 
     def pizza_collision(self):
+        """determines collision of player sprite and food """
         pizza_hit = arcade.check_for_collision_with_list(self.player_sprite, self.pizza_list)
         for pizza in pizza_hit:
             pizza.reset_pos()
