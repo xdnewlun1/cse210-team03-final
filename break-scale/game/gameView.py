@@ -135,7 +135,11 @@ class GameView(arcade.View):
             # Image create by Zach 
             apple = Apple()
             self.apple_list.append(apple)
-    
+
+    def create_carrot(self):
+        for c in range(20):
+            carrot = Carrot()
+            self.carrot_list.append(carrot)
     
     def create_donut(self):
         for d in range(20):
@@ -144,12 +148,7 @@ class GameView(arcade.View):
             donut.center_y = random.randrange(constants.SCREEN_HEIGHT)
             self.donut_list.append(donut)
 
-    def create_carrot(self):
-        for c in range(20):
-            carrot = Carrot(constants.CARROT_SPRITE,constants.FOOD_SCALING)
-            carrot.center_x = random.randrange(constants.SCREEN_WIDTH)
-            carrot.center_y = random.randrange(constants.SCREEN_HEIGHT)
-            self.carrot_list.append(carrot)
+    
             
     def create_pizza(self): 
         for p in range(20):
