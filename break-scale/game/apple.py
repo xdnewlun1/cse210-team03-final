@@ -9,29 +9,23 @@ class Apple(arcade.Sprite):
 
     def __init__(self) : 
         super().__init__(constants.APPLE_SPRITE, constants.FOOD_SCALING)
+        self.center_x = random.randrange(constants.SCREEN_WIDTH)
+        self.center_y = random.randrange(constants.SCREEN_HEIGHT)
 
-    def create_apple(self):
-        for a in range(20):
-            #create the apple instane by Zach
-            apple = Apple(constants.APPLE_SPRITE, constants.FOOD_SCALING)
-            # position the apple
-            apple.center_x = random.randrange(constants.SCREEN_WIDTH)
-            apple.center_y = random.randrange(constants.SCREEN_HEIGHT)
-            #self.apple_list.append(apple)
+
+    def reset_pos(self):
+        """Rest the fruit once it hits the bottom of the screen"""
+        self.center_y = random.randrange(constants.SCREEN_HEIGHT + 30, constants.SCREEN_HEIGHT + 100)
+        self.center_x = random.randrange(constants.SCREEN_WIDTH)
+
 
     def update(self):
-            # define update to move the food 
         """move the food and see if the food has fallen off the 
         bottom of the screen. if so reset it"""
-        
         self.center_y -= 1
-
-        
         # did the food go off the screen If so, pop back to the top.
-        # or remove it
         if self.top < 0:
-            # self.reset_pos()
-            self.bottom = constants.SCREEN_HEIGHT
+            self.reset_pos()
 
     """
         Copy Falling Snow to be falling apples that collide with the player and give points.
