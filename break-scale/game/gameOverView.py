@@ -12,8 +12,6 @@ class GameOver(arcade.View):
         self.minutes = minutes
         self.new_name = "___"
         self.sec = sec
-        print("Opened GameEndScreen")
-        #self.texture = arcade.load_texture(constants.PLAYER_SPRITE)
 
         # Reset the viewport, necessary if we have a scrolling game and we need
         # to reset the viewport back to the start so we can see what we draw.
@@ -31,8 +29,6 @@ class GameOver(arcade.View):
         """ Draw this view """
         arcade.start_render()
         arcade.set_background_color(arcade.color.PURPLE)
-        #self.texture.draw_sized(constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT / 2,
-        #                        constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT)
         arcade.draw_text("Scoreboard", 10, constants.SCREEN_HEIGHT - 100, arcade.color.BLACK, 79, width=400, align="center", font_name="Kenney Blocks")
         i = 0
         for item in self.score_list:
@@ -61,15 +57,9 @@ class GameOver(arcade.View):
         if self.not_ready == False:
             arcade.draw_text("Press ESC to Leave!", 10, 10, arcade.color.BLACK, 20, width=600, align="center", font_name="Kenney Blocks") 
 
-    #def on_mouse_press(self, _x, _y, _button, _modifiers):
-        # """ If the user presses the mouse button, re-start the game. """
-        # game_view = GameView()
-        # game_view.setup()
-        # self.window.show_view(game_view)
     def on_key_press(self, key, modifiers):
         """ called whenever a key on the keyboard is pressed
         for a list of keys, see:https://api.arcade.academy/en/latest/arcade.key.html """
-        #self.player_sprite.update(key)
         if key >= 97 and key <= 122:
             self.new_name = self.new_name.replace("_", chr(key), 1)
         if key == arcade.key.ESCAPE:
@@ -89,7 +79,6 @@ class GameOver(arcade.View):
         new_time = ["___", self.minutes, self.sec]
         self.score_list.append(new_time)
         self.score_list = sorted(self.score_list[1:], key=itemgetter(1,2,0), reverse=True)
-        print(self.score_list)
         self.score_list.insert(0, ["name", "min", "sec"])
         if len(self.score_list) > 11:
             self.score_list.remove(self.score_list[11])
