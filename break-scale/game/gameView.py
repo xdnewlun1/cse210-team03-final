@@ -104,6 +104,7 @@ class GameView(arcade.View):
         arcade.draw_lrwh_rectangle_textured(0,0,constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT,
                                             self.background)
         self.apple_list.draw()
+        #self.barbell_list.draw()
         self.player_list.draw()
         self.donut_list.draw()
         self.pizza_list.draw()
@@ -150,6 +151,7 @@ class GameView(arcade.View):
         self.carrot_collision()
         self.donut_collision()
         self.pizza_collision()
+        #self.barbell_collision()
 
         # physics engine
         self.physics_engine.update()
@@ -168,7 +170,7 @@ class GameView(arcade.View):
             self.apple_list.append(apple)
 
     # def create_barbell(self):
-    """Creates the barbell"""
+    #     """Creates the barbell"""
     #     for a in range(5):
     #         barbell = Barbell()
     #         self.barbell_list.append(barbell)
@@ -201,7 +203,7 @@ class GameView(arcade.View):
             self.check_health(self.score)
 
     # def barbell_collision(self):
-    """determines collision of player sprite and food """
+    #     """determines collision of player sprite and food """
     #     barbell_hit = arcade.check_for_collision_with_list(self.player_sprite, self.barbell_list)
     #     for barbell in barbell_hit:
     #         barbell.reset_pos()
