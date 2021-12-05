@@ -14,7 +14,7 @@ class GameOver(arcade.View):
         self.new_name = "___"
         self.sec = sec
         self.text_color = arcade.color.BLACK
-        self.back_color = arcade.color.PURPLE
+        self.back_color = arcade.color.DARK_ORCHID
         self.click_sound = arcade.load_sound(constants.CLICK_SOUND)
 
         # Reset the viewport, necessary if we have a scrolling game and we need
