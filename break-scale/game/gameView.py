@@ -47,6 +47,7 @@ class GameView(arcade.View):
         self.donut_list = None
         self.pizza_list = None
         self.wall_list = None
+        self.background = None
         
         self.timer = 0.0
         self.timer_output = "00:00:00"
@@ -68,6 +69,7 @@ class GameView(arcade.View):
         self.donut_list = arcade.SpriteList()
         self.pizza_list = arcade.SpriteList()
         self.wall_list = arcade.SpriteList(use_spatial_hash= True)
+        self.background = arcade.load_texture("/Users/awarbler/Desktop/cse210-team03-final/break-scale/game/resources/images/background/AdobeStock_284556987.png")
         
         self.timer = 0.0
         arcade.play_sound(self.background_music, 0.1, 0, True)
@@ -91,7 +93,7 @@ class GameView(arcade.View):
         self.window.set_mouse_visible(False)
 
         # set up the background
-        arcade.set_background_color(arcade.csscolor.CORNFLOWER_BLUE)
+        #arcade.set_background_color(arcade.csscolor.CORNFLOWER_BLUE)
 
         # create the physics engine by setting it to arcades physcis engine
         self.physics_engine = arcade.PhysicsEngineSimple(self.player_sprite, self.wall_list)
@@ -99,12 +101,14 @@ class GameView(arcade.View):
     def on_draw(self):
         """render the screen and draw the sprites"""
         arcade.start_render()
+        arcade.draw_lrwh_rectangle_textured(0,0,constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT,
+                                            self.background)
         self.apple_list.draw()
         self.player_list.draw()
         self.donut_list.draw()
         self.pizza_list.draw()
         self.carrot_list.draw()
-
+        
         # put text on screen 
         output = f"Weight: {self.score}"
         arcade.draw_text(output, 650, 560, arcade.color.WHITE, 16)
