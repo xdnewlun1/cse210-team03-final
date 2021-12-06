@@ -28,12 +28,12 @@ SCOREBOARD_FILE = PATH + "/resources/scoreboard.csv"
 # do we need gravity? 
 GRAVITY = 1
 # Movement speed of player, in pixels per frame
-PLAYER_MOVEMENT_SPEED = 5
+PLAYER_MOVEMENT_SPEED = 10
 
 # FOOD COUNT 
 # FOOD_COUNT = 50
 # APPLE_COUNT = 15
-FOOD_FALL_SPEED = 0.25
+FOOD_FALL_SPEED = 0.50
 
 DEFAULT_FONT = "Kenney Blocks"
 DEFAULT_FONT_SIZE = 20
