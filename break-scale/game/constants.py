@@ -20,6 +20,7 @@ PIZZA_SPRITE = PATH + "/resources/images/food/pizza_sprite.png"
 OPEN_GAME_SPRITE = PATH + "/resources/images/background/Open_Game_Sprite1.png"
 INSTRUCTIONS_SPRITE = PATH + "/resources/images/background/Instructions_Sprite.png"
 BACKGROUND_SPRITE = PATH + "/resources/images/background/AdobeStock_284556987.png"
+SCOREBOARD_BACKGROUND =PATH + "/resources/images/background/purple.png"
 
 #SCOREBOARD FILE
 SCOREBOARD_FILE = PATH + "/resources/scoreboard.csv"
