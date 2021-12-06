@@ -13,12 +13,13 @@ FOOD_SCALING = 0.5
 PATH = os.path.dirname(os.path.abspath(__file__))
 PLAYER_SPRITE = PATH + "/resources/images/player/test_player1.png"
 APPLE_SPRITE = PATH + "/resources/images/food/apple_sprite.png"
-BARBELL_SPRITE = PATH + "/resources/images/food/barbell1.png"
+BARBELL_SPRITE = PATH + "/resources/images/food/barbell_sprite.png"
 CARROT_SPRITE = PATH + "/resources/images/food/carrot_sprite.png"
 DONUT_SPRITE = PATH + "/resources/images/food/donut_sprite.png"
 PIZZA_SPRITE = PATH + "/resources/images/food/pizza_sprite.png"
-OPEN_GAME_SPRITE = PATH + "/resources/images/background/Open_Game_Sprite.png"
+OPEN_GAME_SPRITE = PATH + "/resources/images/background/Open_Game_Sprite1.png"
 INSTRUCTIONS_SPRITE = PATH + "/resources/images/background/Instructions_Sprite.png"
+BACKGROUND_SPRITE = PATH + "/resources/images/background/AdobeStock_284556987.png"
 
 #SCOREBOARD FILE
 SCOREBOARD_FILE = PATH + "/resources/scoreboard.csv"
@@ -41,3 +42,4 @@ DEFAULT_FONT_SIZE = 20
 CLICK_SOUND = PATH + "/resources/sounds/click.mp3"
 BACKGROUND_MUSIC = PATH + "/resources/sounds/background_music.mp3"
 CHEWING = PATH + "/resources/sounds/chewing.mp3"
+
