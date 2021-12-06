@@ -1,7 +1,7 @@
 import arcade
 from game import constants 
 from game.apple import Apple
-#from game.barbell import Barbell
+from game.barbell import Barbell
 from game.carrot import Carrot
 from game.donut import Donut
 from game.gameOverView import GameOver
@@ -42,7 +42,7 @@ class GameView(arcade.View):
         # Each sprite should go into a list set to none 
         self.player_list = None
         self.apple_list = None
-        #self.barbell_list = None
+        self.barbell_list = None
         self.carrot_list = None
         self.donut_list = None
         self.pizza_list = None
@@ -64,12 +64,12 @@ class GameView(arcade.View):
         # sprite list create the object instance for individual 
         self.player_list = arcade.SpriteList()
         self.apple_list = arcade.SpriteList()
-        #self.barbell_list = arcade.SpriteList()
+        self.barbell_list = arcade.SpriteList()
         self.carrot_list = arcade.SpriteList()
         self.donut_list = arcade.SpriteList()
         self.pizza_list = arcade.SpriteList()
         self.wall_list = arcade.SpriteList(use_spatial_hash= True)
-        self.background = arcade.load_texture("/Users/awarbler/Desktop/cse210-team03-final/break-scale/game/resources/images/background/AdobeStock_284556987.png")
+        self.background = arcade.load_texture(constants.BACKGROUND_SPRITE)
         
         self.timer = 0.0
         arcade.play_sound(self.background_music, 0.1, 0, True)
@@ -85,7 +85,7 @@ class GameView(arcade.View):
         self.create_carrot()
         self.create_donut()
         self.create_pizza()
-        #self.create_barbell()
+        self.create_barbell()
 
         # explosion 
         
@@ -104,7 +104,7 @@ class GameView(arcade.View):
         arcade.draw_lrwh_rectangle_textured(0,0,constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT,
                                             self.background)
         self.apple_list.draw()
-        #self.barbell_list.draw()
+        self.barbell_list.draw()
         self.player_list.draw()
         self.donut_list.draw()
         self.pizza_list.draw()
@@ -134,6 +134,7 @@ class GameView(arcade.View):
         self.donut_list.update()
         self.pizza_list.update()
         self.carrot_list.update()
+        self.barbell_list.update()
 
         # timer 
         # set up timer
@@ -151,7 +152,7 @@ class GameView(arcade.View):
         self.carrot_collision()
         self.donut_collision()
         self.pizza_collision()
-        #self.barbell_collision()
+        self.barbell_collision()
 
         # physics engine
         self.physics_engine.update()
@@ -169,11 +170,11 @@ class GameView(arcade.View):
             apple = Apple()
             self.apple_list.append(apple)
 
-    # def create_barbell(self):
-    #     """Creates the barbell"""
-    #     for a in range(5):
-    #         barbell = Barbell()
-    #         self.barbell_list.append(barbell)
+    def create_barbell(self):
+        """Creates the barbell"""
+        for a in range(5):
+            barbell = Barbell()
+            self.barbell_list.append(barbell)
 
     def create_carrot(self):
         """Creates the carrot """
@@ -189,7 +190,7 @@ class GameView(arcade.View):
 
     def create_pizza(self): 
         """Creates the pizza"""
-        for p in range(20):
+        for p in range(30):
             pizza = Pizza()
             self.pizza_list.append(pizza)
 
@@ -199,16 +200,16 @@ class GameView(arcade.View):
         for apple in apple_hit:
             arcade.play_sound(self.chewing, 0.05)
             apple.reset_pos()
-            self.score += 1
+            self.score += 5
             self.check_health(self.score)
 
-    # def barbell_collision(self):
-    #     """determines collision of player sprite and food """
-    #     barbell_hit = arcade.check_for_collision_with_list(self.player_sprite, self.barbell_list)
-    #     for barbell in barbell_hit:
-    #         barbell.reset_pos()
-    #         self.score -= 5
-    #         self.check_health(self.score)
+    def barbell_collision(self):
+        """determines collision of player sprite and food """
+        barbell_hit = arcade.check_for_collision_with_list(self.player_sprite, self.barbell_list)
+        for barbell in barbell_hit:
+            barbell.reset_pos()
+            self.score -= 5
+            self.check_health(self.score)
 
     def carrot_collision(self):
         """determines collision of player sprite and food """
