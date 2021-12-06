@@ -16,6 +16,7 @@ class GameOver(arcade.View):
         self.text_color = arcade.color.BLACK
         self.back_color = arcade.color.DARK_ORCHID
         self.click_sound = arcade.load_sound(constants.CLICK_SOUND)
+        self.gameOver_background = arcade.load_texture(constants.SCOREBOARD_BACKGROUND)
 
         # Reset the viewport, necessary if we have a scrolling game and we need
         # to reset the viewport back to the start so we can see what we draw.
@@ -45,22 +46,26 @@ class GameOver(arcade.View):
             then it will switch to tell you to leave the game using ESC. not_ready is the tracking for if the ENTER key is pressed.
         """
         arcade.start_render()
-        arcade.set_background_color(self.back_color)
-        arcade.draw_text("Scoreboard", 10, constants.SCREEN_HEIGHT - 100, self.text_color, 79, width=400, align="center", font_name="Kenney Blocks")
+        #arcade.set_background_color(self.back_color)
+        arcade.draw_lrwh_rectangle_textured(0,0,constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT,
+                                            self.gameOver_background)
+        arcade.draw_text("Scoreboard", self.window.width / 2-2, self.window.height / 2+210,
+                        arcade.color.BLACK, font_size= 25, anchor_x="center",font_name= constants.DEFAULT_FONT, bold= True)
+        #arcade.draw_text("Scoreboard", 10, constants.SCREEN_HEIGHT - 100, self.text_color, 79, width=400, align="center", font_name="Kenney Blocks")
         i = 0
         for item in self.score_list:
             if '_' in item[0]:
-                arcade.draw_text(self.new_name, 10, constants.SCREEN_HEIGHT - (100 + (40 * (i + 1))), self.text_color, 25, width=200, align="left", font_name="Kenney Blocks")
+                arcade.draw_text(self.new_name, 300, constants.SCREEN_HEIGHT - (275 + (25 * (i + 1))), self.text_color, 12, width=200, align="left", font_name="Kenney Blocks")
             else:
-                arcade.draw_text(item[0].capitalize(), 10, constants.SCREEN_HEIGHT - (100 + (40 * (i + 1))), self.text_color, 25, width=200, align="left", font_name="Kenney Blocks")
+                arcade.draw_text(item[0].capitalize(), 300, constants.SCREEN_HEIGHT - (275 + (25 * (i + 1))), self.text_color, 12, width=200, align="left", font_name="Kenney Blocks")
             i += 1
         i = 0
         for item in self.score_list:
             time = (f"{item[1]}:{item[2]}")
             if(self.score_list.index(item) == 0):
-                arcade.draw_text(time, 242, constants.SCREEN_HEIGHT - (100 + (40 * (i + 1))), self.text_color, 25, width=200, align="left", font_name="Kenney Blocks")
+                arcade.draw_text(time, 442, constants.SCREEN_HEIGHT - (275 + (25 * (i + 1))), self.text_color, 12, width=200, align="left", font_name="Kenney Blocks")
             else:
-                arcade.draw_text(time, 300, constants.SCREEN_HEIGHT - (100 + (40 * (i + 1))), self.text_color, 25, width=200, align="left", font_name="Kenney Blocks")
+                arcade.draw_text(time, 500, constants.SCREEN_HEIGHT - (275 + (25 * (i + 1))), self.text_color, 12, width=200, align="left", font_name="Kenney Blocks")
             i += 1
         
         self.not_ready = False
@@ -68,11 +73,11 @@ class GameOver(arcade.View):
             if '_' in item[0]:
                 self.not_ready = True
                 if '_' in self.new_name:
-                    arcade.draw_text("ENTER YOUR INITIALS! BKSP to Delete a letter!", 10, 10, self.text_color, 15, width=600, align="center", font_name="Kenney Blocks")
+                    arcade.draw_text("ENTER YOUR INITIALS!   BKSP to Delete a letter!", 110, 475, self.text_color, 12, width=600, align="center", font_name="Kenney Blocks")
                 else:
-                    arcade.draw_text("Press ENTER to Confirm! BKSP to Delete!", 10, 10, self.text_color, 15, width=600, align="center", font_name="Kenney Blocks")
+                    arcade.draw_text("Press ENTER to Confirm!   BKSP to Delete!", 110, 475, self.text_color, 12, width=600, align="center", font_name="Kenney Blocks")
         if self.not_ready == False:
-            arcade.draw_text("Press ESC to Leave!", 10, 10, self.text_color, 20, width=600, align="center", font_name="Kenney Blocks") 
+            arcade.draw_text("Press ESC to Leave!", 110, 475, self.text_color, 12, width=600, align="center", font_name="Kenney Blocks") 
 
     def on_key_press(self, key, modifiers):
         """ called whenever a key on the keyboard is pressed
