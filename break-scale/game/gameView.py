@@ -172,20 +172,20 @@ class GameView(arcade.View):
 
     def check_timer(self,timer):
         if timer >= "Time: 00:10:00":
-            constants.GRAVITY_SPEED = 1
-        if timer >= "Time: 00:20:00":
-            constants.GRAVITY_SPEED = 1.5
+            constants.GRAVITY_SPEED = 1.25
         if timer >= "Time: 00:30:00":
-            constants.GRAVITY_SPEED = 1.75
-        if timer >= "Time: 00:40:00":
-            constants.GRAVITY_SPEED = 2
+            constants.GRAVITY_SPEED = 1.5
         if timer >= "Time: 00:50:00":
-            constants.GRAVITY_SPEED = 2.25
-        if timer >= "Time: 00:55:00":
-            constants.GRAVITY_SPEED = 2.5
+            constants.GRAVITY_SPEED = 2
         if timer >= "Time: 01:00:00":
+            constants.GRAVITY_SPEED = 2.25
+        if timer >= "Time: 01:10:00":
+            constants.GRAVITY_SPEED = 2.30
+        if timer >= "Time: 01:30:00":
+            constants.GRAVITY_SPEED = 2.5
+        if timer >= "Time: 01:50:00":
             constants.GRAVITY_SPEED = 2.75
-        if timer >= "Time: 01:05:00":
+        if timer >= "Time: 02:00:00":
             constants.GRAVITY_SPEED = 3
         else:
             pass
