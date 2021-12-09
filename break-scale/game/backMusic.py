@@ -10,6 +10,7 @@ class BackgroundMusic():
         
         self.muted = False
         self.mute_counter = 0
+        
         self.background_player = arcade.play_sound(self.background_music, constants.MUSIC_VOLUME, 0, True)
 
     def on_key_press(self, key, modifiers):
