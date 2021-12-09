@@ -18,7 +18,7 @@ class Barbell(arcade.Sprite):
     def update(self):
         """move the food and see if the food has fallen off the 
         bottom of the screen. if so reset it"""
-        self.center_y -= 1
+        self.center_y -= constants.GRAVITY_SPEED
 
         # did the food go off the screen If so, pop back to the top.
         if self.top < 0:
