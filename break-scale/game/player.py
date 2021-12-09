@@ -13,6 +13,19 @@ class Player(arcade.Sprite):
         self.center_x = 400
         self.center_y = 50
 
+        # self.scale = constants.CHARACTER_SCALING
+        # self.textures = []
+
+        # texture = arcade.load_texture(constants.PLAYER_LEFT_SPRITE)
+        # self.texture.append(texture)
+        # texture = arcade.load_texture(constants.PLAYER_RIGHT_SPRITE,
+        #                                 flipped_horizontally=True)
+        
+        # self.textures.append(texture)
+
+        # # BY DEFAULT FACE RIGHT                                 
+        # self.texture = texture
+
     def on_key_press(self, key, modifier):
         """ called whenever a key on the keyboard is pressed
         for a list of keys, see:https://api.arcade.academy/en/latest/arcade.key.html """
@@ -36,6 +49,12 @@ class Player(arcade.Sprite):
         # Move player
         self.center_x += self.change_x
         self.center_y += self.change_y
+
+        # Figure out if we should face left or right
+        if self.change_x < 0:
+            self.texture = self.textures[constants.LEFT_FACING]
+        elif self.change_x > 0:
+            self.texture = self.textures[constants.RIGHT_FACING]
 
         # Check for out-of-bounds
         if self.left < 0:

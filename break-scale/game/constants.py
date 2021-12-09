@@ -12,6 +12,8 @@ FOOD_SCALING = 0.5
 #Sprites
 PATH = os.path.dirname(os.path.abspath(__file__))
 PLAYER_SPRITE = PATH + "/resources/images/player/test_player1.png"
+PLAYER_LEFT_SPRITE = PATH + "/resources/images/player/test_player2.png"
+PLAYER_RIGHT_SPRITE = PATH + "/resources/images/player/test_player3.png"
 APPLE_SPRITE = PATH + "/resources/images/food/apple_sprite.png"
 BARBELL_SPRITE = PATH + "/resources/images/food/Dumbbell_sprite.png"
 CARROT_SPRITE = PATH + "/resources/images/food/carrot_sprite.png"
@@ -34,7 +36,9 @@ GRAVITY_SPEED = 1
 
 DEFAULT_FONT = "Kenney Blocks"
 DEFAULT_FONT_SIZE = 20
-# PLAYER STARTING POSITION
+# PLAYER 
+LEFT_FACING = 0
+RIGHT_FACING = 1
 
 #Sounds
 CLICK_SOUND = PATH + "/resources/sounds/click.mp3"
