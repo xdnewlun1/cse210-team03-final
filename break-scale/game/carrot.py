@@ -12,8 +12,8 @@ class Carrot(arcade.Sprite):
 
     def reset_pos(self):
         """Rest the fruit once it hits the bottom of the screen"""
-        self.center_y = random.randrange(constants.SCREEN_HEIGHT + 30, constants.SCREEN_HEIGHT + 100)
         self.center_x = random.randrange(constants.SCREEN_WIDTH)
+        self.center_y = random.randrange(constants.SCREEN_HEIGHT + 30, constants.SCREEN_HEIGHT + 100)
 
     def update(self):
         """move the food and see if the food has fallen off the 

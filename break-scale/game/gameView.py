@@ -10,18 +10,15 @@ from game.player import Player
 from game.pizza import Pizza
 
 
-
 class GameView(arcade.View):
     """A code template for a person who directs the game. The responsibility of 
     this class of objects is to control the sequence of play.
     
     Stereotype:
         Controller
-
     """
     def __init__(self):
         """The class constructor.
-        
         Args:
         player_list The player sprite 
         self.apple_list SpriteList - list of food set to None
@@ -90,13 +87,8 @@ class GameView(arcade.View):
         self.create_pizza()
         self.create_barbell()
 
-        # explosion 
-        
         #don't show the mouse pointer # snowflake ex
         self.window.set_mouse_visible(False)
-
-        # set up the background
-        #arcade.set_background_color(arcade.csscolor.CORNFLOWER_BLUE)
 
         # create the physics engine by setting it to arcades physcis engine
         self.physics_engine = arcade.PhysicsEngineSimple(self.player_sprite, self.wall_list)
@@ -158,7 +150,6 @@ class GameView(arcade.View):
         self.barbell_list.update()
 
         # timer 
-        # set up timer
         self.timer += delta_time
         # calculate minutes
         self.minutes = int(self.timer) // 60
