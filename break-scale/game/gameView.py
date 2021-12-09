@@ -1,4 +1,5 @@
 import arcade
+import random
 from game import constants 
 from game.apple import Apple
 from game.barbell import Barbell
@@ -207,32 +208,32 @@ class GameView(arcade.View):
             
     def create_apple(self):
         """Creates the apple"""
-        for a in range(20):
+        for a in range(random.randrange(5,25)):
             # Image create by Zach 
             apple = Apple()
             self.apple_list.append(apple)
 
     def create_barbell(self):
         """Creates the barbell"""
-        for a in range(5):
+        for a in range(random.randrange(5,25)):
             barbell = Barbell()
             self.barbell_list.append(barbell)
 
     def create_carrot(self):
         """Creates the carrot """
-        for c in range(20):
+        for c in range(random.randrange(5,25)):
             carrot = Carrot()
             self.carrot_list.append(carrot)
     
     def create_donut(self):
         """Creates the donut """
-        for d in range(20):
+        for d in range(random.randrange(5,25)):
             donut = Donut()
             self.donut_list.append(donut)
 
     def create_pizza(self): 
         """Creates the pizza"""
-        for p in range(30):
+        for p in range(random.randrange(5,25)):
             pizza = Pizza()
             self.pizza_list.append(pizza)
 

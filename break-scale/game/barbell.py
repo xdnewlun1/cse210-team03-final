@@ -6,7 +6,7 @@ class Barbell(arcade.Sprite):
     """This class represents the food on our screen. it is a child class
     of the arcade library Sprite class"""
     def __init__(self) : 
-        super().__init__(constants.BARBELL_SPRITE, constants.FOOD_SCALING)
+        super().__init__(constants.BARBELL_SPRITE, constants.FOOD_SCALING+.25)
         self.center_x = random.randrange(constants.SCREEN_WIDTH)
         self.center_y = random.randrange(constants.SCREEN_HEIGHT + 2,constants.SCREEN_HEIGHT + 600)
 
