@@ -51,10 +51,10 @@ class Player(arcade.Sprite):
         self.center_y += self.change_y
 
         # Figure out if we should face left or right
-        if self.change_x < 0:
-            self.texture = self.textures[constants.LEFT_FACING]
-        elif self.change_x > 0:
-            self.texture = self.textures[constants.RIGHT_FACING]
+        # if self.change_x < 0:
+        #     self.texture = self.textures[constants.LEFT_FACING]
+        # elif self.change_x > 0:
+        #     self.texture = self.textures[constants.RIGHT_FACING]
 
         # Check for out-of-bounds
         if self.left < 0:
