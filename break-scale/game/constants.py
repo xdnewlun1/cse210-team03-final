@@ -43,6 +43,7 @@ DEFAULT_FONT_SIZE = 20
 CLICK_SOUND = PATH + "/resources/sounds/click.mp3"
 BACKGROUND_MUSIC = PATH + "/resources/sounds/background_music.mp3"
 CHEWING = PATH + "/resources/sounds/chewing.mp3"
+RICK = PATH + "/resources/sounds/rick-roll.mp3"
 
 #VOLUME
 MUSIC_VOLUME = 0.1

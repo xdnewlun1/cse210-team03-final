@@ -61,7 +61,7 @@ class GameOver(arcade.View):
             i += 1
         i = 0
         for item in self.score_list:
-            time = (f"{item[1]}:{item[2]}")
+            time = (f"{(item[1])}:{item[2]}")
             if(self.score_list.index(item) == 0):
                 arcade.draw_text(time, 442, constants.SCREEN_HEIGHT - (275 + (25 * (i + 1))), self.text_color, 12, width=200, align="left", font_name="Kenney Blocks")
             else:
