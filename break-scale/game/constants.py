@@ -25,14 +25,11 @@ SCOREBOARD_BACKGROUND =PATH + "/resources/images/background/purple.png"
 #SCOREBOARD FILE
 SCOREBOARD_FILE = PATH + "/resources/scoreboard.csv"
 
-# do we need gravity? 
-GRAVITY = 1
 # Movement speed of player, in pixels per frame
 PLAYER_MOVEMENT_SPEED = 10
 
-# FOOD COUNT 
-# FOOD_COUNT = 50
-# APPLE_COUNT = 15
+# FOOD
+GRAVITY = 1
 GRAVITY_SPEED = 1
 
 DEFAULT_FONT = "Kenney Blocks"
