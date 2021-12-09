@@ -8,7 +8,7 @@ class Barbell(arcade.Sprite):
     def __init__(self) : 
         super().__init__(constants.BARBELL_SPRITE, constants.FOOD_SCALING)
         self.center_x = random.randrange(constants.SCREEN_WIDTH)
-        self.center_y = random.randrange(constants.SCREEN_HEIGHT)
+        self.center_y = random.randrange(constants.SCREEN_HEIGHT + 2,constants.SCREEN_HEIGHT + 600)
 
     def reset_pos(self):
         """Rest the fruit once it hits the bottom of the screen"""
