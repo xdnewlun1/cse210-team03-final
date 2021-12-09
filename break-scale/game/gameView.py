@@ -38,6 +38,7 @@ class GameView(arcade.View):
         #Add the Music
         self.background_music = arcade.load_sound(constants.BACKGROUND_MUSIC, True)
         self.chewing = arcade.load_sound(constants.CHEWING)
+        self.muted = False
 
         # Each sprite should go into a list set to none 
         self.player_list = None
@@ -72,7 +73,7 @@ class GameView(arcade.View):
         self.background = arcade.load_texture(constants.BACKGROUND_SPRITE)
         
         self.timer = 0.0
-        arcade.play_sound(self.background_music, 0.1, 0, True)
+        self.background_player = arcade.play_sound(self.background_music, constants.MUSIC_VOLUME, 0, True)
 
         # keep track of score
         self.score = 150 #set to zero here and in initialize 
@@ -121,6 +122,16 @@ class GameView(arcade.View):
         """ called whenever a key on the keyboard is pressed
         for a list of keys, see:https://api.arcade.academy/en/latest/arcade.key.html """
         self.player_sprite.on_key_press(key,modifiers)
+        if key == arcade.key.M:
+            if self.muted == True:
+                self.background_music.set_volume(constants.MUSIC_VOLUME, self.background_player)
+                constants.SFX_VOLUME = 0.05
+                self.muted = False
+            else:
+                self.background_music.set_volume(constants.MUTED_VOLUME, self.background_player)
+                constants.SFX_VOLUME = 0
+                self.muted = True
+
 
     def on_key_release(self, key, modifiers):
         """ called whenever the user lets off a previously pressed key basically stops the player from moving"""
@@ -220,7 +231,7 @@ class GameView(arcade.View):
         """determines collision of player sprite and food """
         apple_hit = arcade.check_for_collision_with_list(self.player_sprite, self.apple_list)
         for apple in apple_hit:
-            arcade.play_sound(self.chewing, 0.05)
+            arcade.play_sound(self.chewing, constants.SFX_VOLUME)
             apple.reset_pos()
             self.score += 5
             self.check_health(self.score)
@@ -237,7 +248,7 @@ class GameView(arcade.View):
         """determines collision of player sprite and food """
         carrot_hit = arcade.check_for_collision_with_list(self.player_sprite, self.carrot_list)
         for carrot in carrot_hit:
-            arcade.play_sound(self.chewing, 0.05)
+            arcade.play_sound(self.chewing, constants.SFX_VOLUME)
             carrot.reset_pos()
             self.score += 5
             self.check_health(self.score)
@@ -246,7 +257,7 @@ class GameView(arcade.View):
         """determines collision of player sprite and food """
         donut_hit = arcade.check_for_collision_with_list(self.player_sprite, self.donut_list)
         for donut in donut_hit:
-            arcade.play_sound(self.chewing, 0.05)
+            arcade.play_sound(self.chewing, constants.SFX_VOLUME)
             donut.reset_pos()
             self.score += 15
             self.check_health(self.score)
@@ -255,7 +266,7 @@ class GameView(arcade.View):
         """determines collision of player sprite and food """
         pizza_hit = arcade.check_for_collision_with_list(self.player_sprite, self.pizza_list)
         for pizza in pizza_hit:
-            arcade.play_sound(self.chewing, 0.05)
+            arcade.play_sound(self.chewing, constants.SFX_VOLUME)
             pizza.reset_pos()
             self.score += 10
             self.check_health(self.score)

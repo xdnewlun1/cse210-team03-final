@@ -44,3 +44,8 @@ CLICK_SOUND = PATH + "/resources/sounds/click.mp3"
 BACKGROUND_MUSIC = PATH + "/resources/sounds/background_music.mp3"
 CHEWING = PATH + "/resources/sounds/chewing.mp3"
 
+#VOLUME
+MUSIC_VOLUME = 0.1
+SFX_VOLUME = 0.05
+MUTED_VOLUME = 0
+
