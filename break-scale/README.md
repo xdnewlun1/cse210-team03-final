@@ -1,7 +1,8 @@
 # Breaking The Scale
-Break Scale
+Break The Scale
 
-INSERT INTRESTING INTRO HERE!
+Dodge and weave through falling waves of food as you eat your heart out. But be careful, if you hit a weight too high your body may not be able to handle it.
+In Break The Scale you dodge around falling food to try to keep your weight below some weight while trying to stay in the game for the most amount of time possible.
 
 ## Getting Started
 ---
@@ -14,7 +15,7 @@ python3 -m pip install arcade
 After you've installed the required libraries, open a terminal and browse to the 
 project's root folder. Start the program by running the following command.
 ```
-python3 batter 
+python3 break-scale
 ```
 You can also run the program from an IDE like Visual Studio Code. Start your IDE 
 and open the project folder. Select the main module inside the hunter folder and 
