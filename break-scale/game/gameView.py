@@ -8,6 +8,7 @@ from game.donut import Donut
 from game.gameOverView import GameOver
 from game.player import Player
 from game.pizza import Pizza
+from game.backMusic import BackgroundMusic
 
 
 class GameView(arcade.View):
@@ -34,10 +35,10 @@ class GameView(arcade.View):
         """
         super().__init__()
         #Add the Music
-        self.background_music = arcade.load_sound(constants.BACKGROUND_MUSIC, True)
-        self.chewing = arcade.load_sound(constants.CHEWING)
-        self.muted = False
-        self.mute_counter = 0
+        #self.background_music = arcade.load_sound(constants.BACKGROUND_MUSIC, True)
+        # self.chewing = arcade.load_sound(constants.CHEWING)
+        # self.muted = False
+        # self.mute_counter = 0
 
         # Each sprite should go into a list set to none 
         self.player_list = None
@@ -48,6 +49,8 @@ class GameView(arcade.View):
         self.pizza_list = None
         self.wall_list = None
         self.background = None
+        self.backgroundMusic = None
+        self.chewing = None
         
         self.timer = 0.0
         self.timer_output = "00:00:00"
@@ -70,9 +73,11 @@ class GameView(arcade.View):
         self.pizza_list = arcade.SpriteList()
         self.wall_list = arcade.SpriteList(use_spatial_hash= True)
         self.background = arcade.load_texture(constants.BACKGROUND_SPRITE)
+        self.backgroundMusic = BackgroundMusic()
+        self.chewing = arcade.load_sound(constants.CHEWING)
         
         self.timer = 0.0
-        self.background_player = arcade.play_sound(self.background_music, constants.MUSIC_VOLUME, 0, True)
+        # self.background_player = arcade.play_sound(self.background_music, constants.MUSIC_VOLUME, 0, True)
 
         # keep track of score
         self.score = 150 #set to zero here and in initialize 
@@ -116,23 +121,24 @@ class GameView(arcade.View):
         """ called whenever a key on the keyboard is pressed
         for a list of keys, see:https://api.arcade.academy/en/latest/arcade.key.html """
         self.player_sprite.on_key_press(key,modifiers)
-        if key == arcade.key.M:
-            self.mute_counter += 1
-            if self.mute_counter == 9:
-                self.rick_roll = arcade.load_sound(constants.RICK, True)
-                self.rick_player = arcade.play_sound(self.rick_roll, 0.1, 0, True)
-                self.muted = False
-            if self.mute_counter == 10:
-                self.rick_roll.stop(self.rick_player)
-                self.muted = False
-            if self.muted == True:
-                self.background_music.set_volume(constants.MUSIC_VOLUME, self.background_player)
-                constants.SFX_VOLUME = 0.05
-                self.muted = False
-            else:
-                self.background_music.set_volume(constants.MUTED_VOLUME, self.background_player)
-                constants.SFX_VOLUME = 0
-                self.muted = True
+        self.backgroundMusic.on_key_press(key, modifiers)
+        # if key == arcade.key.M:
+        #     self.mute_counter += 1
+        #     if self.mute_counter == 9:
+        #         self.rick_roll = arcade.load_sound(constants.RICK, True)
+        #         self.rick_player = arcade.play_sound(self.rick_roll, 0.1, 0, True)
+        #         self.muted = False
+        #     if self.mute_counter == 10:
+        #         self.rick_roll.stop(self.rick_player)
+        #         self.muted = False
+        #     if self.muted == True:
+        #         self.background_music.set_volume(constants.MUSIC_VOLUME, self.background_player)
+        #         constants.SFX_VOLUME = 0.05
+        #         self.muted = False
+        #     else:
+        #         self.background_music.set_volume(constants.MUTED_VOLUME, self.background_player)
+        #         constants.SFX_VOLUME = 0
+        #         self.muted = True
 
 
     def on_key_release(self, key, modifiers):
