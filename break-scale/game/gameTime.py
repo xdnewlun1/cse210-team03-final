@@ -3,17 +3,17 @@ from game import constants
 
 class Game_timer():
     
-    def update_timer(timer):#, delta_time):
+    def update_timer(self,timer):#, delta_time):
     #     # timer 
         #timer += delta_time
     #     # calculate minutes
-        minutes = int(timer) // 60
+        self.minutes = int(timer) // 60
     #     # calculate seconds
-        seconds = int(timer) % 60
+        self.seconds = int(timer) % 60
     #     # calculate 100s of a second
-        seconds_100 = int((timer - seconds) * 100)
+        self.seconds_100 = int((timer - self.seconds) * 100)
 
-        return f"Time: {minutes:02d}:{seconds:02d}:{seconds_100:02d}"
+        return f"Time: {self.minutes:02d}:{self.seconds:02d}:{self.seconds_100:02d}"
     
     def check_timer(timer):
         if timer >= "Time: 00:15:00":

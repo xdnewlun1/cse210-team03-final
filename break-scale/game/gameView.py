@@ -154,7 +154,7 @@ class GameView(arcade.View):
 
         #self.game_timer(delta_time)
         self.timer += delta_time
-        self.timer_output = Game_timer.update_timer(self.timer)
+        self.timer_output = Game_timer.update_timer(self,self.timer)
 
         #self.check_timer(self.timer_output)
         Game_timer.check_timer(self.timer_output)
