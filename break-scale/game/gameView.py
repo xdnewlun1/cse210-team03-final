@@ -162,10 +162,10 @@ class GameView(arcade.View):
         # physics engine
         self.physics_engine.update()
 
-    def check_health(self,score):
+    def check_health(self, score):
         """Checks the weight of the player to determines gameOver"""
         if self.score >= 600:
-            view = GameOver(self.minutes, self.seconds)
+            view = GameOver(self.timer_output)
             self.window.show_view(view)
     
     def create_food(self):
@@ -199,17 +199,8 @@ class GameView(arcade.View):
         apple_hit = arcade.check_for_collision_with_list(self.player_sprite, self.apple_list)
         for apple in apple_hit:
             arcade.play_sound(self.chewing, constants.SFX_VOLUME)
+            apple.reset_pos()
             self.score += 5
-            if self.score < 600:
-                apple.reset_pos()
-
-            # if self.score >= 600:
-            #     #dead 
-            #     explosion = Explosion(self.explosion_texture_list)
-            #     explosion.center_x = apple_hit.center_x
-            #     explosion.center_y = apple_hit.center_y
-            #     explosion.update()
-            #     self.explosions_list.append(explosion)
             self.check_health(self.score)
 
     def barbell_collision(self):
