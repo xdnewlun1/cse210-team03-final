@@ -157,7 +157,7 @@ class GameView(arcade.View):
         self.timer_output = Game_timer.update_timer(self.timer)
 
         #self.check_timer(self.timer_output)
-        Game_timer.check_timer(self.timer_output)
+        Game_timer.check_timer(self.minutes, self.seconds)
 
         # physics engine
         self.physics_engine.update()
