@@ -156,8 +156,8 @@ class GameView(arcade.View):
         self.timer += delta_time
         self.timer_output = Game_timer.update_timer(self.timer)
 
-        #self.check_timer(self.timer_output)
-        Game_timer.check_timer(self.minutes, self.seconds)
+        #self.check_timer(self.timer_output) 
+        Game_timer.check_timer(self.timer_output)
 
         # physics engine
         self.physics_engine.update()
@@ -165,7 +165,7 @@ class GameView(arcade.View):
     def check_health(self, score):
         """Checks the weight of the player to determines gameOver"""
         if self.score >= 600:
-            view = GameOver(self.timer_output)
+            view = GameOver(self.minutes, self.seconds)
             self.window.show_view(view)
     
     def create_food(self):
