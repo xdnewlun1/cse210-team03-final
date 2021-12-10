@@ -38,7 +38,6 @@ class Player(arcade.Sprite):
             
     def on_key_release(self, key, modifier):
         """ called whenever the user lets off a previously pressed key basically stops the player from moving"""
-      
         if key == arcade.key.LEFT or key == arcade.key.A:
             self.change_x = 0
         elif key == arcade.key.RIGHT or key == arcade.key.D:
