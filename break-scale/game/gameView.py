@@ -9,7 +9,8 @@ from game.gameOverView import GameOver
 from game.player import Player
 from game.pizza import Pizza
 from game.backMusic import BackgroundMusic
-
+#from game.explosion import Explosion
+from game.gameTime import Game_timer
 
 class GameView(arcade.View):
     """A code template for a person who directs the game. The responsibility of 
@@ -46,7 +47,9 @@ class GameView(arcade.View):
         self.background = None
         self.backgroundMusic = None
         self.chewing = None
-        
+        #explosion
+        #self.explosions_list = None
+
         self.timer = 0.0
         self.timer_output = "00:00:00"
 
@@ -54,8 +57,16 @@ class GameView(arcade.View):
         self.player_sprite = None
         self.score = 150
 
-        # set background color or set the tileMap
-        arcade.set_background_color(arcade.csscolor.CORNFLOWER_BLUE)
+        # preload animation frames
+        # self.explosion_texture_list = []
+        # # LOAD TEH EXPLOSIONS FROM A SPRITE SHEET
+        # columns = 16
+        # count = 60
+        # sprite_width= 256
+        # sprite_height = 256
+        # file_name = constants.EXPLOSION_FILE_NAME
+        # self.explosion_texture_list = arcade.load_spritesheet(file_name, sprite_width, sprite_height,columns,count )
+
 
     def setup(self):
         """set up the game here. call this function to restart the game """
@@ -70,9 +81,10 @@ class GameView(arcade.View):
         self.background = arcade.load_texture(constants.BACKGROUND_SPRITE)
         self.backgroundMusic = BackgroundMusic()
         self.chewing = arcade.load_sound(constants.CHEWING)
-        
+        self.explosions_list = arcade.SpriteList()
+
         self.timer = 0.0
-        # self.background_player = arcade.play_sound(self.background_music, constants.MUSIC_VOLUME, 0, True)
+        self.timer_output = "00:00:00"
 
         # keep track of score
         self.score = 150 #set to zero here and in initialize 
@@ -80,11 +92,7 @@ class GameView(arcade.View):
         # set up player sprite
         self.player_sprite = Player()
         self.player_list.append(self.player_sprite)
-
-        self.create_apple()
-        self.create_carrot()
-        self.create_donut()
-        self.create_pizza()
+        self.create_food()
         self.create_barbell()
 
         #don't show the mouse pointer # snowflake ex
@@ -104,6 +112,7 @@ class GameView(arcade.View):
         self.donut_list.draw()
         self.pizza_list.draw()
         self.carrot_list.draw()
+        self.explosions_list.draw()
         
         # put text on screen 
         output = f"Weight: {self.score}"
@@ -113,7 +122,7 @@ class GameView(arcade.View):
         arcade.draw_text(self.timer_output, 10, 560, arcade.color.WHITE, 16)
 
         # mute text on screen
-        mute_text = "Push M to mute - Push it 9 times for a surprise"
+        mute_text = "Push M to Mute"
         arcade.draw_text(mute_text,20,20,arcade.csscolor.WHITE), 16
 
     def on_key_press(self, key, modifiers):
@@ -135,65 +144,49 @@ class GameView(arcade.View):
         self.pizza_list.update()
         self.carrot_list.update()
         self.barbell_list.update()
+        self.explosions_list.update()
 
-        
         self.apple_collision()
         self.carrot_collision()
         self.donut_collision()
         self.pizza_collision()
         self.barbell_collision()
 
-        self.game_timer(delta_time)
+        #self.game_timer(delta_time)
+        self.timer += delta_time
+        self.timer_output = Game_timer.update_timer(self.timer)
+
+        #self.check_timer(self.timer_output)
+        Game_timer.check_timer(self.timer_output)
 
         # physics engine
         self.physics_engine.update()
-
-        self.check_timer(self.timer_output)
-
-    def game_timer(self,delta_time) :  
-        # timer 
-        self.timer += delta_time
-        # calculate minutes
-        self.minutes = int(self.timer) // 60
-        # calculate seconds
-        self.seconds = int(self.timer) % 60
-        # calculate 100s of a second
-        self.seconds_100 = int((self.timer - self.seconds) * 100)
-        # figure out our output
-        self.timer_output = f"Time: {self.minutes:02d}:{self.seconds:02d}:{self.seconds_100:02d}"
-
-    def check_timer(self,timer):
-        if timer >= "Time: 00:10:00":
-            constants.GRAVITY_SPEED = 1.25
-        if timer >= "Time: 00:30:00":
-            constants.GRAVITY_SPEED = 1.5
-        if timer >= "Time: 00:50:00":
-            constants.GRAVITY_SPEED = 2
-        if timer >= "Time: 01:00:00":
-            constants.GRAVITY_SPEED = 2.25
-        if timer >= "Time: 01:10:00":
-            constants.GRAVITY_SPEED = 2.30
-        if timer >= "Time: 01:30:00":
-            constants.GRAVITY_SPEED = 2.5
-        if timer >= "Time: 01:50:00":
-            constants.GRAVITY_SPEED = 2.75
-        if timer >= "Time: 02:00:00":
-            constants.GRAVITY_SPEED = 3
-        else:
-            pass
 
     def check_health(self,score):
         """Checks the weight of the player to determines gameOver"""
         if self.score >= 600:
             view = GameOver(self.minutes, self.seconds)
             self.window.show_view(view)
-            
-    def create_apple(self):
-        """Creates the apple"""
+    
+    def create_food(self):
         for a in range(random.randrange(5,25)):
             # Image create by Zach 
             apple = Apple()
             self.apple_list.append(apple)
+            """Creates the carrot """
+        for c in range(random.randrange(5,25)):
+            carrot = Carrot()
+            self.carrot_list.append(carrot)
+    
+        """Creates the donut """
+        for d in range(random.randrange(5,25)):
+            donut = Donut()
+            self.donut_list.append(donut)
+
+        """Creates the pizza"""
+        for p in range(random.randrange(5,25)):
+            pizza = Pizza()
+            self.pizza_list.append(pizza)
 
     def create_barbell(self):
         """Creates the barbell"""
@@ -201,31 +194,22 @@ class GameView(arcade.View):
             barbell = Barbell()
             self.barbell_list.append(barbell)
 
-    def create_carrot(self):
-        """Creates the carrot """
-        for c in range(random.randrange(5,25)):
-            carrot = Carrot()
-            self.carrot_list.append(carrot)
-    
-    def create_donut(self):
-        """Creates the donut """
-        for d in range(random.randrange(5,25)):
-            donut = Donut()
-            self.donut_list.append(donut)
-
-    def create_pizza(self): 
-        """Creates the pizza"""
-        for p in range(random.randrange(5,25)):
-            pizza = Pizza()
-            self.pizza_list.append(pizza)
-
     def apple_collision(self):
         """determines collision of player sprite and food """
         apple_hit = arcade.check_for_collision_with_list(self.player_sprite, self.apple_list)
         for apple in apple_hit:
             arcade.play_sound(self.chewing, constants.SFX_VOLUME)
-            apple.reset_pos()
             self.score += 5
+            if self.score < 600:
+                apple.reset_pos()
+
+            # if self.score >= 600:
+            #     #dead 
+            #     explosion = Explosion(self.explosion_texture_list)
+            #     explosion.center_x = apple_hit.center_x
+            #     explosion.center_y = apple_hit.center_y
+            #     explosion.update()
+            #     self.explosions_list.append(explosion)
             self.check_health(self.score)
 
     def barbell_collision(self):
