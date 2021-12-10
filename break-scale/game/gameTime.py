@@ -3,7 +3,7 @@ from game import constants
 
 class Game_timer():
     
-    def update_timer(self,timer):#, delta_time):
+    def update_timer(self, timer):#, delta_time):
     #     # timer 
         #timer += delta_time
     #     # calculate minutes
