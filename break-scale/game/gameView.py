@@ -34,11 +34,6 @@ class GameView(arcade.View):
         self.score = 150 starting weight
         """
         super().__init__()
-        #Add the Music
-        #self.background_music = arcade.load_sound(constants.BACKGROUND_MUSIC, True)
-        # self.chewing = arcade.load_sound(constants.CHEWING)
-        # self.muted = False
-        # self.mute_counter = 0
 
         # Each sprite should go into a list set to none 
         self.player_list = None
@@ -126,24 +121,6 @@ class GameView(arcade.View):
         for a list of keys, see:https://api.arcade.academy/en/latest/arcade.key.html """
         self.player_sprite.on_key_press(key,modifiers)
         self.backgroundMusic.on_key_press(key, modifiers)
-        # if key == arcade.key.M:
-        #     self.mute_counter += 1
-        #     if self.mute_counter == 9:
-        #         self.rick_roll = arcade.load_sound(constants.RICK, True)
-        #         self.rick_player = arcade.play_sound(self.rick_roll, 0.1, 0, True)
-        #         self.muted = False
-        #     if self.mute_counter == 10:
-        #         self.rick_roll.stop(self.rick_player)
-        #         self.muted = False
-        #     if self.muted == True:
-        #         self.background_music.set_volume(constants.MUSIC_VOLUME, self.background_player)
-        #         constants.SFX_VOLUME = 0.05
-        #         self.muted = False
-        #     else:
-        #         self.background_music.set_volume(constants.MUTED_VOLUME, self.background_player)
-        #         constants.SFX_VOLUME = 0
-        #         self.muted = True
-
 
     def on_key_release(self, key, modifiers):
         """ called whenever the user lets off a previously pressed key basically stops the player from moving"""
