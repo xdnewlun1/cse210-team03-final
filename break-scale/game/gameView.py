@@ -136,6 +136,21 @@ class GameView(arcade.View):
         self.carrot_list.update()
         self.barbell_list.update()
 
+        
+        self.apple_collision()
+        self.carrot_collision()
+        self.donut_collision()
+        self.pizza_collision()
+        self.barbell_collision()
+
+        self.game_timer(delta_time)
+
+        # physics engine
+        self.physics_engine.update()
+
+        self.check_timer(self.timer_output)
+
+    def game_timer(self,delta_time) :  
         # timer 
         self.timer += delta_time
         # calculate minutes
@@ -146,17 +161,6 @@ class GameView(arcade.View):
         self.seconds_100 = int((self.timer - self.seconds) * 100)
         # figure out our output
         self.timer_output = f"Time: {self.minutes:02d}:{self.seconds:02d}:{self.seconds_100:02d}"
-
-        self.apple_collision()
-        self.carrot_collision()
-        self.donut_collision()
-        self.pizza_collision()
-        self.barbell_collision()
-
-        # physics engine
-        self.physics_engine.update()
-
-        self.check_timer(self.timer_output)
 
     def check_timer(self,timer):
         if timer >= "Time: 00:10:00":
