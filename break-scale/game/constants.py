@@ -24,6 +24,14 @@ INSTRUCTIONS_SPRITE = PATH + "/resources/images/background/Instructions_Sprite.p
 BACKGROUND_SPRITE = PATH + "/resources/images/background/AdobeStock_284556987.png"
 SCOREBOARD_BACKGROUND =PATH + "/resources/images/background/purple.png"
 
+# explosion info
+EXPLOSION_FILE_NAME = PATH + "/resources/images/explosion.png"
+EXPLOSION_TEXTURE_COUNT = 60
+COLUMNS: 16
+COUNT = 60
+SPRITE_WIDTH = 256
+SPRITE_HEIGHT = 256
+
 #SCOREBOARD FILE
 SCOREBOARD_FILE = PATH + "/resources/scoreboard.csv"
 
