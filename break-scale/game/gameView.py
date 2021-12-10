@@ -117,6 +117,10 @@ class GameView(arcade.View):
         # set up timer output the time text
         arcade.draw_text(self.timer_output, 10, 560, arcade.color.WHITE, 16)
 
+        # mute text on screen
+        mute_text = "Push M to mute - Push it 9 times for a surprise"
+        arcade.draw_text(mute_text,20,20,arcade.csscolor.WHITE), 16
+
     def on_key_press(self, key, modifiers):
         """ called whenever a key on the keyboard is pressed
         for a list of keys, see:https://api.arcade.academy/en/latest/arcade.key.html """
