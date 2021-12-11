@@ -1,5 +1,7 @@
 import arcade
 import random
+
+from arcade import texture
 from game import constants 
 from game.apple import Apple
 from game.barbell import Barbell
@@ -9,7 +11,7 @@ from game.gameOverView import GameOver
 from game.player import Player
 from game.pizza import Pizza
 from game.backMusic import BackgroundMusic
-#from game.explosion import Explosion
+from game.explosion import Explosion
 from game.gameTime import Game_timer
 
 class GameView(arcade.View):
@@ -48,7 +50,7 @@ class GameView(arcade.View):
         self.backgroundMusic = None
         self.chewing = None
         #explosion
-        #self.explosions_list = None
+        self.explosions_list = None
 
         self.timer = 0.0
         self.timer_output = "00:00:00"
@@ -58,15 +60,15 @@ class GameView(arcade.View):
         self.score = 150
 
         # preload animation frames
-        # self.explosion_texture_list = []
+        self.explosion_texture_list = []
         # # LOAD TEH EXPLOSIONS FROM A SPRITE SHEET
-        # columns = 16
-        # count = 60
-        # sprite_width= 256
-        # sprite_height = 256
-        # file_name = constants.EXPLOSION_FILE_NAME
-        # self.explosion_texture_list = arcade.load_spritesheet(file_name, sprite_width, sprite_height,columns,count )
-
+        columns = 16
+        count = 60
+        sprite_width= 256
+        sprite_height = 256
+        file_name = constants.EXPLOSION_FILE_NAME
+        self.explosion_texture_list = arcade.load_spritesheet(file_name, sprite_width, sprite_height,columns,count)
+        
 
     def setup(self):
         """set up the game here. call this function to restart the game """
@@ -81,7 +83,7 @@ class GameView(arcade.View):
         self.background = arcade.load_texture(constants.BACKGROUND_SPRITE)
         self.backgroundMusic = BackgroundMusic()
         self.chewing = arcade.load_sound(constants.CHEWING)
-        self.explosions_list = arcade.SpriteList()
+        
 
         self.timer = 0.0
         self.timer_output = "00:00:00"
@@ -97,6 +99,9 @@ class GameView(arcade.View):
 
         #don't show the mouse pointer # snowflake ex
         self.window.set_mouse_visible(False)
+
+        self.explosions_list = arcade.SpriteList()
+
 
         # create the physics engine by setting it to arcades physcis engine
         self.physics_engine = arcade.PhysicsEngineSimple(self.player_sprite, self.wall_list)
@@ -134,6 +139,12 @@ class GameView(arcade.View):
     def on_key_release(self, key, modifiers):
         """ called whenever the user lets off a previously pressed key basically stops the player from moving"""
         self.player_sprite.on_key_release(key,modifiers)
+
+    def on_mouse_press(self, x, y, button, modifier):
+        explosion = Explosion(self.explosion_texture_list)
+        explosion.center_x = x
+        explosion.center_y = y 
+        self.explosions_list.append(explosion)
 
     def on_update(self, delta_time):
         """movement and game logic"""
@@ -196,6 +207,7 @@ class GameView(arcade.View):
         for a in range(random.randrange(5,15)):
             barbell = Barbell()
             self.barbell_list.append(barbell)
+            
 
     def apple_collision(self):
         """determines collision of player sprite and food """
