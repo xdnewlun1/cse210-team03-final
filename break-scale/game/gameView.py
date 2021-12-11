@@ -140,11 +140,11 @@ class GameView(arcade.View):
         """ called whenever the user lets off a previously pressed key basically stops the player from moving"""
         self.player_sprite.on_key_release(key,modifiers)
 
-    def on_mouse_press(self, x, y, button, modifier):
-        explosion = Explosion(self.explosion_texture_list)
-        explosion.center_x = x
-        explosion.center_y = y 
-        self.explosions_list.append(explosion)
+    # def on_mouse_press(self, x, y, button, modifier):
+    #     explosion = Explosion(self.explosion_texture_list)
+    #     explosion.center_x = x
+    #     explosion.center_y = y 
+    #     self.explosions_list.append(explosion)
 
     def on_update(self, delta_time):
         """movement and game logic"""
@@ -176,6 +176,13 @@ class GameView(arcade.View):
 
     def check_health(self, score):
         """Checks the weight of the player to determines gameOver"""
+        if self.score >= 180:
+            explosion = Explosion(self.explosion_texture_list)
+            explosion.center_x = self.player_sprite.center_x
+            explosion.center_y = self.player_sprite.center_y
+            self.explosions_list.append(explosion)
+
+
         if self.score >= 600:
             view = GameOver(self.minutes, self.seconds)
             self.window.show_view(view)
