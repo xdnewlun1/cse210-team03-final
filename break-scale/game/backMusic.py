@@ -1,7 +1,5 @@
 import arcade
-from arcade.sound import Sound
 from game import constants
-#https://api.arcade.academy/en/latest/_modules/arcade/sound.html
 
 class BackgroundMusic():
     def __init__(self):
