@@ -9,8 +9,9 @@ class Explosion(arcade.Sprite):
         super().__init__()
 
         # start at the first frame
-        self.current_texture = 0
+        
         self.textures = texture_list
+        self.current_texture = 0
     
     def update(self):
         # update to the next frame of explosion
