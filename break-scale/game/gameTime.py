@@ -16,19 +16,27 @@ class Game_timer():
         return f"Time: {self.minutes:02d}:{self.seconds:02d}:{self.seconds_100:02d}"
     
     def check_timer(timer):
-        if timer >= "Time: 00:15:00":
-            constants.GRAVITY_SPEED = 1.25
-        if timer >= "Time: 00:30:00":
-            constants.GRAVITY_SPEED = 1.5
-        if timer >= "Time: 00:50:00":
-            constants.GRAVITY_SPEED = 2
-        if timer >= "Time: 01:00:00":
+        if timer >= "Time: 00:10:00":
             constants.GRAVITY_SPEED = 2.25
-        if timer >= "Time: 01:10:00":
-            constants.GRAVITY_SPEED = 2.30
-        if timer >= "Time: 01:30:00":
+        if timer >= "Time: 00:20:00":
             constants.GRAVITY_SPEED = 2.5
-        if timer >= "Time: 01:50:00":
+        if timer >= "Time: 00:30:00":
             constants.GRAVITY_SPEED = 2.75
-        if timer >= "Time: 02:00:00":
+        if timer >= "Time: 00:40:00":
             constants.GRAVITY_SPEED = 3
+        if timer >= "Time: 00:50:00":
+            constants.GRAVITY_SPEED = 3.25
+        if timer >= "Time: 01:00:00":
+            constants.GRAVITY_SPEED = 3.5
+        if timer >= "Time: 01:10:00":
+            constants.GRAVITY_SPEED = 3.75
+        if timer >= "Time: 01:20:00":
+            constants.GRAVITY_SPEED = 4
+        if timer >= "Time: 01:30:00":
+            constants.GRAVITY_SPEED = 4.25
+        if timer >= "Time: 01:40:00":
+            constants.GRAVITY_SPEED = 4.5
+        if timer >= "Time: 01:50:00":
+            constants.GRAVITY_SPEED = 4.75
+        if timer >= "Time: 02:00:00":
+            constants.GRAVITY_SPEED = 5

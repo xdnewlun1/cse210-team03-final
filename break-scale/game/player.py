@@ -8,23 +8,24 @@ class Player(arcade.Sprite):
 
     def __init__(self) : 
         """The class constructor."""
-        super().__init__(constants.PLAYER_SPRITE, constants.CHARACTER_SCALING/2)
+        super().__init__(constants.PLAYER_SPRITE, constants.CHARACTER_SCALING)
         # location of player
         self.center_x = 400
         self.center_y = 50
 
-        # self.scale = constants.CHARACTER_SCALING
-        # self.textures = []
+        self.scale = constants.CHARACTER_SCALING
+        self.textures = []
 
-        # texture = arcade.load_texture(constants.PLAYER_LEFT_SPRITE)
-        # self.texture.append(texture)
-        # texture = arcade.load_texture(constants.PLAYER_RIGHT_SPRITE,
-        #                                 flipped_horizontally=True)
-        
-        # self.textures.append(texture)
+        texture = arcade.load_texture(constants.PLAYER_LEFT_SPRITE)
+        self.textures.append(texture)
+        texture = arcade.load_texture(constants.PLAYER_LEFT_SPRITE,
+                                        flipped_horizontally=True)
+        self.textures.append(texture)
+        texture = arcade.load_texture(constants.PLAYER_SPRITE)
+        self.textures.append(texture)
 
-        # # BY DEFAULT FACE RIGHT                                 
-        # self.texture = texture
+        # BY DEFAULT FACE RIGHT                                 
+        self.texture = texture
 
     def on_key_press(self, key, modifier):
         """ called whenever a key on the keyboard is pressed
@@ -32,9 +33,10 @@ class Player(arcade.Sprite):
         if key == arcade.key.LEFT or key == arcade.key.A:
             self.change_x = - constants.PLAYER_MOVEMENT_SPEED
         elif key == arcade.key.RIGHT or key == arcade.key.D:
-            self.change_x = constants.PLAYER_MOVEMENT_SPEED
+            self.change_x = constants.PLAYER_MOVEMENT_SPEED 
         elif key == arcade.key.ESCAPE:
             arcade.exit()
+        
             
     def on_key_release(self, key, modifier):
         """ called whenever the user lets off a previously pressed key basically stops the player from moving"""
@@ -50,10 +52,12 @@ class Player(arcade.Sprite):
         self.center_y += self.change_y
 
         # Figure out if we should face left or right
-        # if self.change_x < 0:
-        #     self.texture = self.textures[constants.LEFT_FACING]
-        # elif self.change_x > 0:
-        #     self.texture = self.textures[constants.RIGHT_FACING]
+        if self.change_x < 0:
+            self.texture = self.textures[constants.LEFT_FACING]
+        elif self.change_x > 0:
+            self.texture = self.textures[constants.RIGHT_FACING]
+        elif self.change_x == 0:
+            self.texture = self.textures[constants.NOT_MOVING]
 
         # Check for out-of-bounds
         if self.left < 0:

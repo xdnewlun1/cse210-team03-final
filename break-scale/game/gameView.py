@@ -116,14 +116,14 @@ class GameView(arcade.View):
         
         # put text on screen 
         output = f"Weight: {self.score}"
-        arcade.draw_text(output, 650, 560, arcade.color.WHITE, 16)
+        arcade.draw_text(output, 650, 560, arcade.color.BLACK, 16)
 
         # set up timer output the time text
-        arcade.draw_text(self.timer_output, 10, 560, arcade.color.WHITE, 16)
+        arcade.draw_text(self.timer_output, 10, 560, arcade.color.BLACK, 16)
 
         # mute text on screen
         mute_text = "Push M to Mute"
-        arcade.draw_text(mute_text,20,20,arcade.csscolor.WHITE), 16
+        arcade.draw_text(mute_text,20,20,arcade.csscolor.BLACK), 16
 
     def on_key_press(self, key, modifiers):
         """ called whenever a key on the keyboard is pressed
@@ -169,28 +169,28 @@ class GameView(arcade.View):
             self.window.show_view(view)
     
     def create_food(self):
-        for a in range(random.randrange(5,25)):
+        for a in range(random.randrange(5,20)):
             # Image create by Zach 
             apple = Apple()
             self.apple_list.append(apple)
             """Creates the carrot """
-        for c in range(random.randrange(5,25)):
+        for c in range(random.randrange(5,20)):
             carrot = Carrot()
             self.carrot_list.append(carrot)
     
         """Creates the donut """
-        for d in range(random.randrange(5,25)):
+        for d in range(random.randrange(5,20)):
             donut = Donut()
             self.donut_list.append(donut)
 
         """Creates the pizza"""
-        for p in range(random.randrange(5,25)):
+        for p in range(random.randrange(5,20)):
             pizza = Pizza()
             self.pizza_list.append(pizza)
 
     def create_barbell(self):
         """Creates the barbell"""
-        for a in range(random.randrange(5,25)):
+        for a in range(random.randrange(5,15)):
             barbell = Barbell()
             self.barbell_list.append(barbell)
 
