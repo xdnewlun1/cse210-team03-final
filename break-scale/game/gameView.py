@@ -146,6 +146,7 @@ class GameView(arcade.View):
         self.barbell_list.update()
         self.explosions_list.update()
 
+        # calls the collisions for the food 
         self.apple_collision()
         self.carrot_collision()
         self.donut_collision()
@@ -169,11 +170,13 @@ class GameView(arcade.View):
             self.window.show_view(view)
     
     def create_food(self):
+        """creates the food """
         for a in range(random.randrange(5,20)):
             # Image create by Zach 
             apple = Apple()
             self.apple_list.append(apple)
-            """Creates the carrot """
+        
+        """Creates the carrot """
         for c in range(random.randrange(5,20)):
             carrot = Carrot()
             self.carrot_list.append(carrot)

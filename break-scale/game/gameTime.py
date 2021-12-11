@@ -1,9 +1,10 @@
-from arcade.sound import Sound
 from game import constants
 
 class Game_timer():
+    """Game timer will update the game timer and check it """
     
     def update_timer(self, timer):#, delta_time):
+        """updates the time for the game """
     #     # timer 
         #timer += delta_time
     #     # calculate minutes
@@ -16,6 +17,7 @@ class Game_timer():
         return f"Time: {self.minutes:02d}:{self.seconds:02d}:{self.seconds_100:02d}"
     
     def check_timer(timer):
+        """checks the time to speed up the food falling"""
         if timer >= "Time: 00:10:00":
             constants.GRAVITY_SPEED = 2.25
         if timer >= "Time: 00:20:00":
