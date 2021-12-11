@@ -61,11 +61,14 @@ class GameOver(arcade.View):
             i += 1
         i = 0
         for item in self.score_list:
-            time = (f"{(item[1])}:{item[2]}")
+            format_sec = str(item[2])
+            if len(format_sec) == 1:
+                format_sec = "0" + format_sec
+            time = (f"{(item[1])}:{format_sec}")
             if(self.score_list.index(item) == 0):
                 arcade.draw_text(time, 442, constants.SCREEN_HEIGHT - (210 + (25 * (i + 1))), self.text_color, 12, width=300, align="left", font_name="Kenney Blocks")
             else:
-                arcade.draw_text(time, 500, constants.SCREEN_HEIGHT - (210 + (25 * (i + 1))), self.text_color, 12, width=300, align="left", font_name="Kenney Blocks")
+                arcade.draw_text(time, 470, constants.SCREEN_HEIGHT - (210 + (25 * (i + 1))), self.text_color, 12, width=300, align="left", font_name="Kenney Blocks")
             i += 1
         
         self.not_ready = False
