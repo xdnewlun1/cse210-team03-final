@@ -49,23 +49,23 @@ class GameOver(arcade.View):
         #arcade.set_background_color(self.back_color)
         arcade.draw_lrwh_rectangle_textured(0,0,constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT,
                                             self.gameOver_background)
-        arcade.draw_text("Scoreboard", self.window.width / 2-2, self.window.height / 2+210,
+        arcade.draw_text("Scoreboard", self.window.width / 2 + 20 , self.window.height / 2+210,
                         arcade.color.BLACK, font_size= 25, anchor_x="center",font_name= constants.DEFAULT_FONT, bold= True)
         #arcade.draw_text("Scoreboard", 10, constants.SCREEN_HEIGHT - 100, self.text_color, 79, width=400, align="center", font_name="Kenney Blocks")
         i = 0
         for item in self.score_list:
             if '_' in item[0]:
-                arcade.draw_text(self.new_name, 300, constants.SCREEN_HEIGHT - (275 + (25 * (i + 1))), self.text_color, 12, width=200, align="left", font_name="Kenney Blocks")
+                arcade.draw_text(self.new_name, 250, constants.SCREEN_HEIGHT - (210 + (25 * (i + 1))), self.text_color, 12, width=300, align="left", font_name="Kenney Blocks")
             else:
-                arcade.draw_text(item[0].capitalize(), 300, constants.SCREEN_HEIGHT - (275 + (25 * (i + 1))), self.text_color, 12, width=200, align="left", font_name="Kenney Blocks")
+                arcade.draw_text(item[0].capitalize(), 250, constants.SCREEN_HEIGHT - (210 + (25 * (i + 1))), self.text_color, 12, width=300, align="left", font_name="Kenney Blocks")
             i += 1
         i = 0
         for item in self.score_list:
             time = (f"{(item[1])}:{item[2]}")
             if(self.score_list.index(item) == 0):
-                arcade.draw_text(time, 442, constants.SCREEN_HEIGHT - (275 + (25 * (i + 1))), self.text_color, 12, width=200, align="left", font_name="Kenney Blocks")
+                arcade.draw_text(time, 442, constants.SCREEN_HEIGHT - (210 + (25 * (i + 1))), self.text_color, 12, width=300, align="left", font_name="Kenney Blocks")
             else:
-                arcade.draw_text(time, 500, constants.SCREEN_HEIGHT - (275 + (25 * (i + 1))), self.text_color, 12, width=200, align="left", font_name="Kenney Blocks")
+                arcade.draw_text(time, 500, constants.SCREEN_HEIGHT - (210 + (25 * (i + 1))), self.text_color, 12, width=300, align="left", font_name="Kenney Blocks")
             i += 1
         
         self.not_ready = False

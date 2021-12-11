@@ -40,7 +40,6 @@ The project files and folders are organized as follows:
 
 ## Authors
 ---
-* # TODO: Add your names and emails here
 Anita Woodford          awoodfor@byui
 Lazaro Felizardo Matola lazarofmatola@gmail.com
 Xander Newlun           xdnewlun1@byui.edu
