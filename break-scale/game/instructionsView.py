@@ -24,13 +24,13 @@ class InstructionsView(arcade.View):
                         arcade.color.WHITE, font_size=constants.DEFAULT_FONT_SIZE*2.2, anchor_x="center",font_name= constants.DEFAULT_FONT)
         arcade.draw_text("How to play", self.window.width / 2+85, self.window.height / 2+95,
                         arcade.color.BLACK, font_size=20, anchor_x="center",font_name= constants.DEFAULT_FONT)
-        arcade.draw_text("You will move the player left and right on the", self.window.width / 2+85, self.window.height / 2+45,
+        arcade.draw_text("It's raining food! Every item you touch you", self.window.width / 2+85, self.window.height / 2+45,
                         arcade.color.RED, font_size=12, anchor_x="center",font_name= constants.DEFAULT_FONT)
-        arcade.draw_text("screen trying to avoid the falling food. Each", self.window.width / 2+85, self.window.height / 2+20,
+        arcade.draw_text("you can't help but eat. Once you reach 600 pounds", self.window.width / 2+85, self.window.height / 2+20,
                         arcade.color.RED, font_size=12, anchor_x="center",font_name= constants.DEFAULT_FONT)                 
-        arcade.draw_text("type of food adds a different amount to your", self.window.width / 2+85, self.window.height / 2-5,
+        arcade.draw_text("you'll explode! So aim for the barbells and avoid", self.window.width / 2+85, self.window.height / 2-5,
                         arcade.color.RED, font_size=12, anchor_x="center",font_name= constants.DEFAULT_FONT)
-        arcade.draw_text("weight and you need to survive as long as you can!", self.window.width / 2+85, self.window.height / 2-30,
+        arcade.draw_text("the unhealthy foods especially. Good Luck!", self.window.width / 2+85, self.window.height / 2-30,
                         arcade.color.RED, font_size=12, anchor_x="center",font_name= constants.DEFAULT_FONT)
         arcade.draw_text("Controls", self.window.width / 2+85, self.window.height / 2-70,
                         arcade.color.BLACK, font_size=20, anchor_x="center",font_name= constants.DEFAULT_FONT)

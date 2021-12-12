@@ -186,23 +186,23 @@ class GameView(arcade.View):
     
     def create_food(self):
         """creates the food """
-        for a in range(random.randrange(5,20)):
+        for a in range(random.randrange(10,25)):
             # Image create by Zach 
             apple = Apple()
             self.apple_list.append(apple)
         
         """Creates the carrot """
-        for c in range(random.randrange(5,20)):
+        for c in range(random.randrange(10,25)):
             carrot = Carrot()
             self.carrot_list.append(carrot)
     
         """Creates the donut """
-        for d in range(random.randrange(5,20)):
+        for d in range(random.randrange(5,25)):
             donut = Donut()
             self.donut_list.append(donut)
 
         """Creates the pizza"""
-        for p in range(random.randrange(5,20)):
+        for p in range(random.randrange(5,25)):
             pizza = Pizza()
             self.pizza_list.append(pizza)
 
