@@ -187,6 +187,7 @@ class GameView(arcade.View):
     def check_health(self, score):
         """Checks the weight of the player to determines gameOver"""
         if self.score >= 600:
+            self.player_sprite.visible = False
             explosion = Explosion(self.explosion_texture_list)
             explosion.center_x = self.player_sprite.center_x
             explosion.center_y = self.player_sprite.center_y
