@@ -1,6 +1,5 @@
 import arcade
 from game import constants
-import os
 
 class Explosion(arcade.Sprite):
     """this class creates an explosion"""
@@ -8,7 +7,6 @@ class Explosion(arcade.Sprite):
         super().__init__()
 
         # start at the first frame
-        
         self.textures = texture_list
         self.current_texture = 0
     
@@ -20,6 +18,7 @@ class Explosion(arcade.Sprite):
             self.set_texture(self.current_texture)
         else:
             self.remove_from_sprite_lists()
+            # end game 
             constants.GAME_OVER = True
         
 

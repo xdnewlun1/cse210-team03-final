@@ -1,7 +1,5 @@
 import arcade
 import random
-
-from arcade import texture
 from game import constants 
 from game.apple import Apple
 from game.barbell import Barbell
@@ -85,7 +83,6 @@ class GameView(arcade.View):
         self.backgroundMusic = BackgroundMusic()
         self.chewing = arcade.load_sound(constants.CHEWING)
         
-
         self.timer = 0.0
         self.timer_output = "00:00:00"
 
@@ -102,7 +99,6 @@ class GameView(arcade.View):
         self.window.set_mouse_visible(False)
 
         self.explosions_list = arcade.SpriteList()
-
 
         # create the physics engine by setting it to arcades physcis engine
         self.physics_engine = arcade.PhysicsEngineSimple(self.player_sprite, self.wall_list)
@@ -141,12 +137,6 @@ class GameView(arcade.View):
         """ called whenever the user lets off a previously pressed key basically stops the player from moving"""
         self.player_sprite.on_key_release(key,modifiers)
 
-    # def on_mouse_press(self, x, y, button, modifier):
-    #     explosion = Explosion(self.explosion_texture_list)
-    #     explosion.center_x = x
-    #     explosion.center_y = y 
-    #     self.explosions_list.append(explosion)
-
     def on_update(self, delta_time):
         """movement and game logic"""
         # Generate a list of all sprites that collided with the player.
@@ -180,6 +170,7 @@ class GameView(arcade.View):
 
 
     def end_game(self):
+        """End game """
         view = GameOver(self.minutes, self.seconds)
         self.window.show_view(view)
 
