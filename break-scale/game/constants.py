@@ -3,6 +3,7 @@ import os
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 SCREEN_TITLE = "Break the Scale"
+GAME_OVER = False
 
 #constants used to scale our sprites from their original size 
 CHARACTER_SCALING = 2.5

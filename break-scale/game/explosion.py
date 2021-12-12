@@ -1,6 +1,5 @@
-import os
 import arcade
-import random
+from game import constants
 import os
 
 class Explosion(arcade.Sprite):
@@ -21,5 +20,6 @@ class Explosion(arcade.Sprite):
             self.set_texture(self.current_texture)
         else:
             self.remove_from_sprite_lists()
+            constants.GAME_OVER = True
         
 

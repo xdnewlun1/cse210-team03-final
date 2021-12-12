@@ -37,7 +37,8 @@ class GameView(arcade.View):
         self.score = 150 starting weight
         """
         super().__init__()
-
+        
+        self.game_over = False
         # Each sprite should go into a list set to none 
         self.player_list = None
         self.apple_list = None
@@ -174,18 +175,22 @@ class GameView(arcade.View):
         # physics engine
         self.physics_engine.update()
 
+        if constants.GAME_OVER == True:
+            self.end_game()
+
+
+    def end_game(self):
+        view = GameOver(self.minutes, self.seconds)
+        self.window.show_view(view)
+
+
     def check_health(self, score):
         """Checks the weight of the player to determines gameOver"""
-        if self.score >= 180:
+        if self.score >= 600:
             explosion = Explosion(self.explosion_texture_list)
             explosion.center_x = self.player_sprite.center_x
             explosion.center_y = self.player_sprite.center_y
             self.explosions_list.append(explosion)
-
-
-        if self.score >= 600:
-            view = GameOver(self.minutes, self.seconds)
-            self.window.show_view(view)
     
     def create_food(self):
         """creates the food """
