@@ -21,7 +21,7 @@ DONUT_SPRITE = PATH + "/resources/images/food/donut_sprite.png"
 PIZZA_SPRITE = PATH + "/resources/images/food/pizza_sprite.png"
 OPEN_GAME_SPRITE = PATH + "/resources/images/background/Open_Game_Sprite1.png"
 INSTRUCTIONS_SPRITE = PATH + "/resources/images/background/Instructions_Sprite.png"
-BACKGROUND_SPRITE = PATH + "/resources/images/background/basic_background.png"
+BACKGROUND_SPRITE = PATH + "/resources/images/background/simple.png"
 SCOREBOARD_BACKGROUND =PATH + "/resources/images/background/scoreboard.png"
 
 # explosion info
